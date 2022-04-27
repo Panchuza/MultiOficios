@@ -1,6 +1,5 @@
 package ar.com.MultiOficios.errores;
 
-
 public class ErrorServicio extends Exception{
     
     public ErrorServicio(String msn){
