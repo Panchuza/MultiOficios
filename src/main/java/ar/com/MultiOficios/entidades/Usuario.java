@@ -31,11 +31,11 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacionUsuario;
     
-    @OneToMany
-    private Publicacion publicacion;
-    
-    @ManyToOne
-    private Zona zona;
+//    @OneToMany
+//    private Publicacion publicacion;
+//    
+//    @ManyToOne
+//    private Zona zona;
 
     /**
      * @return the id
