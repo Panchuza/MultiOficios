@@ -40,6 +40,8 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private RolUsuario rolUsuario;
     
+//    @OneToMany
+//    private Publicacion publicacion;
     @Enumerated(EnumType.STRING)
     private ValoracionProveedores valoracionPoveedores; 
     
@@ -63,7 +65,7 @@ public class Usuario {
         this.fechaBajaUsuario = fechaBajaUsuario;
         this.fechaModificacionUsuario = fechaModificacionUsuario;
         this.rolUsuario = rolUsuario;
-        this.publicacion = publicacion;
+//        this.publicacion = publicacion;
     }
     
     /**
@@ -195,16 +197,16 @@ public class Usuario {
     /**
      * @return the publicacion
      */
-    public Publicacion getPublicacion() {
-        return publicacion;
-    }
-
-    /**
-     * @param publicacion the publicacion to set
-     */
-    public void setPublicacion(Publicacion publicacion) {
-        this.publicacion = publicacion;
-    }
+//    public Publicacion getPublicacion() {
+//        return publicacion;
+//    }
+//
+//    /**
+//     * @param publicacion the publicacion to set
+//     */
+//    public void setPublicacion(Publicacion publicacion) {
+//        this.publicacion = publicacion;
+//    }
 
     /**
      * @return the password
