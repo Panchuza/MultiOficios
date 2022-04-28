@@ -1,4 +1,3 @@
-
 package ar.com.MultiOficios.enums;
 
 public enum RolUsuario {
