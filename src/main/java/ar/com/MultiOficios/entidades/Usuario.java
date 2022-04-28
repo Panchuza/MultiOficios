@@ -45,8 +45,8 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private ValoracionProveedores valoracionPoveedores; 
     
-    @OneToMany
-    private Publicacion publicacion;
+//    @OneToMany
+//    private Publicacion publicacion;
 //    
 //    @ManyToOne
 //    private Zona zona;
