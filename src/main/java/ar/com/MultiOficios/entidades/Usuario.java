@@ -1,9 +1,13 @@
 package ar.com.MultiOficios.entidades;
 
+import ar.com.MultiOficios.enums.RolUsuario;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,6 +22,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String email;
+    private String password;
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDeNacimiento;
@@ -31,12 +36,32 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacionUsuario;
     
-//    @OneToMany
-//    private Publicacion publicacion;
+    @Enumerated(EnumType.STRING)
+    private RolUsuario rolUsuario;
+    
+    @OneToMany
+    private Publicacion publicacion;
 //    
 //    @ManyToOne
 //    private Zona zona;
 
+    public Usuario() {
+    }
+    
+    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaDeNacimiento, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, Publicacion publicacion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.fechaDeNacimiento = fechaDeNacimiento;
+        this.fechaAltaUsuario = fechaAltaUsuario;
+        this.fechaBajaUsuario = fechaBajaUsuario;
+        this.fechaModificacionUsuario = fechaModificacionUsuario;
+        this.rolUsuario = rolUsuario;
+        this.publicacion = publicacion;
+    }
+    
     /**
      * @return the id
      */
@@ -147,6 +172,48 @@ public class Usuario {
      */
     public void setFechaModificacionUsuario(Date fechaModificacionUsuario) {
         this.fechaModificacionUsuario = fechaModificacionUsuario;
+    }
+
+    /**
+     * @return the rolUsuario
+     */
+    public RolUsuario getRolUsuario() {
+        return rolUsuario;
+    }
+
+    /**
+     * @param rolUsuario the rolUsuario to set
+     */
+    public void setRolUsuario(RolUsuario rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
+
+    /**
+     * @return the publicacion
+     */
+    public Publicacion getPublicacion() {
+        return publicacion;
+    }
+
+    /**
+     * @param publicacion the publicacion to set
+     */
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     
