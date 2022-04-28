@@ -1,6 +1,7 @@
 package ar.com.MultiOficios.entidades;
 
 import ar.com.MultiOficios.enums.RolUsuario;
+import ar.com.MultiOficios.enums.ValoracionProveedores;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,6 +39,9 @@ public class Usuario {
     
     @Enumerated(EnumType.STRING)
     private RolUsuario rolUsuario;
+    
+    @Enumerated(EnumType.STRING)
+    private ValoracionProveedores valoracionPoveedores; 
     
     @OneToMany
     private Publicacion publicacion;
