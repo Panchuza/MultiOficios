@@ -32,7 +32,7 @@ public class UsuarioServicio implements UserDetailsService{
     
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
-    public void crearUsuario(String nombre, String apellido, String email, String password, String confirmarPassword, RolUsuario rolUsuario) throws Exception {
+    public void crearUsuario(String nombre, String apellido, String email, String password, String confirmarPassword , RolUsuario rolUsuario) throws Exception {
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
 
@@ -41,9 +41,10 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setApellido(apellido);
         usuario.setEmail(email);
         usuario.setPassword(passwordEncriptado);
+//        usuario.setFechaDeNacimiento(fechaDeNacimiento);
         usuario.setFechaAltaUsuario(new Date());
         usuario.setFechaBajaUsuario(null);
-        usuario.setRolUsuario(rolUsuario.CLIENTE);
+        usuario.setRolUsuario(rolUsuario);
 
         usuarioRepositorio.save(usuario);
     }

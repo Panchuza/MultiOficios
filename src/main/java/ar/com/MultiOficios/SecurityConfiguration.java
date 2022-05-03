@@ -1,4 +1,4 @@
-package ar.com.MultiOficios.controladores;
+package ar.com.MultiOficios;
 
 
 import ar.com.MultiOficios.servicios.UsuarioServicio;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
-public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Autowired
 	public UsuarioServicio usuarioServicio;
