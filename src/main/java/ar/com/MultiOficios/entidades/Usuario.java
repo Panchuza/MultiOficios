@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Usuario {
@@ -53,8 +54,7 @@ public class Usuario {
     public Usuario() {
     }
     
-    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaDeNacimiento, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, Publicacion publicacion) {
-        this.id = id;
+    public Usuario(String nombre, String apellido, String email, String password, Date fechaDeNacimiento, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, Publicacion publicacion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
