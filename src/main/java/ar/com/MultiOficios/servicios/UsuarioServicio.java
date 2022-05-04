@@ -33,6 +33,7 @@ public class UsuarioServicio implements UserDetailsService{
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
     public void crearUsuario(String nombre, String apellido, String email, String password, String confirmarPassword , RolUsuario rolUsuario) throws Exception {
+        
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
 
@@ -127,6 +128,9 @@ public class UsuarioServicio implements UserDetailsService{
         }
         if (email == null || email.isEmpty()) {
             throw new Exception("Error: El email del Usuario no puede ser nulo");
+        }
+        if(usuarioRepositorio.buscarPorEmail(email) != null){
+            throw new ErrorServicio("Error: El email "+email+" ya se encuentra registrado.");
         }
         if (password == null || password.isEmpty()) {
             throw new Exception("Error: La contraseña del Usuario no puede ser nula");

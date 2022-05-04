@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/usuario")
 public class UsuarioControlador {
 
     @Autowired
@@ -21,12 +23,12 @@ public class UsuarioControlador {
 
 //    @Autowired
 //    private RolUsuario rolUsuario;
-    @GetMapping("/usuario/form")
+    @GetMapping("form")
     public String form() {
         return "form.html";
     }
 
-    @PostMapping("/usuario/form")
+    @PostMapping("form")
     public String crearUsuario(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String confirmarPassword, @RequestParam RolUsuario rolUsuario) {
@@ -36,9 +38,10 @@ public class UsuarioControlador {
             usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
             modelo.put("exito", "se registro el usuario'" + nombre + "' correctamente");
+            
         } catch (Exception e) {
-
+            modelo.put("error", e.getMessage());
         }
-        return "index.html";
+        return "form.html";
     }
 }
