@@ -253,14 +253,14 @@ button {
 
 .main_heading h2 strong {
     background: #38c8a8;
-    color: #fff;
+    color: #EFF7E1;
     font-weight: 600;
     padding: 0 15px;
     line-height: 68px;
 }
 
 .white_heading_main h2 {
-    color: #fff;
+    color: #EFF7E1f;
 }
 
 .small_main_heading {
@@ -333,13 +333,16 @@ a.readmore_bt {
 
 .logo_section {
     text-align: center;
+    padding-top: 0px;
 }
 .logo {
-    float: left;
+    float: center;
+    padding-top: 0px;
 }
 nav.main-menu {
     float: right;
     margin-left: 0;
+    padding-top: 0px;
 }
 .menu-area-main li:hover a,
 .menu-area-main li:focus a {
@@ -483,7 +486,7 @@ nav.main-menu {
     padding: 5px 0;
 }
 .dropdown-bar .dropdown-link li a:hover {
-    color: #38c8a8;
+    color: #A2D0C1;
 }
 .dropdown-bar .dropdown-link li a img {
     margin-right: 7px;
@@ -538,7 +541,7 @@ nav.main-menu {
     border-radius: 0px;
 }
 #login-modal .modal-content .modal-header {
-    background: #38c8a8;
+    background: #A2D0C1;
     border-radius: 0;
 }
 #login-modal .modal-content .modal-body .form-group input {
@@ -597,18 +600,18 @@ nav.main-menu {
     border-radius: 0px;
     border: none;
     padding-left: 15px;
-    border: 1px solid #e0e7ed;
+    border: 1px solid #EFF7E1;
 }
 .header-search form .search-btn {
     position: absolute;
     right: 0;
     top: 0;
     border: 0;
-    color: #fff;
+    color: #EFF7E1;
     font-size: 20px;
     padding: 4px 15px;
     border-radius: 0px;
-    background-color: #38c8a8;
+    background-color: #A2D0C1;
     cursor: pointer;
 }
 .header-search form .search-btn:hover {
@@ -630,7 +633,7 @@ nav.main-menu {
     padding: 15px;
     background: #ffffff;
     list-style: none;
-    border: 2px solid #38c8a8;
+    border: 2px solid #A2D0C1;
     opacity: 0;
     visibility: hidden;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -652,7 +655,7 @@ nav.main-menu {
     transform: scaleY(1);
 }
 .inner-cart {
-    background: #38c8a8;
+    background: #A2D0C1;
     border-radius: 2px;
     padding: 0px;
     color: #ffffff;
@@ -673,10 +676,10 @@ nav.main-menu {
     display: inline-block;
 }
 .cart-box a:hover {
-    color: #38c8a8;
+    color: #A2D0C1;
 }
 .cart-box a span.icon {
-    background: #38c8a8;
+    background: #A2D0C1;
     width: 30px;
     height: 40px;
     display: inline-block;
@@ -691,7 +694,7 @@ nav.main-menu {
     right: -8px;
     top: -8px;
     line-height: initial;
-    background: #38c8a8;
+    background: #A2D0C1;
     padding: 3px;
     border-radius: 50%;
     width: 17px;
@@ -707,10 +710,10 @@ nav.main-menu {
     display: inline-block;
 }
 .wish-box a:hover {
-    color: #38c8a8;
+    color: #A2D0C1;
 }
 .wish-box a span.icon {
-    background: #38c8a8;
+    background: #A2D0C1;
     width: 40px;
     height: 40px;
     display: inline-block;
@@ -765,7 +768,7 @@ nav.main-menu {
     position: absolute;
     right: 0px;
     top: 0px;
-    background: #38c8a8;
+    background: #A2D0C1;
     color: #ffffff;
     width: 20px;
     height: 20px;
@@ -789,7 +792,7 @@ nav.main-menu {
 .subtotal {
     text-align: left;
     text-transform: capitalize;
-    color: #38c8a8;
+    color: #A2D0C1;
     font-weight: 500;
     margin-bottom: 15px;
 }
@@ -818,7 +821,7 @@ nav.main-menu {
     right: -8px;
     top: -8px;
     line-height: initial;
-    background: #38c8a8;
+    background: #A2D0C1;
     padding: 3px;
     border-radius: 50%;
     width: 17px;
@@ -970,14 +973,15 @@ nav.main-menu {
 
 /*--------------------------------------------------------------------- layout new css ---------------------------------------------------------------------*/
 .head {
-    background: #023041;
-    height: 50px;
+    background: #EFF7E1;
+    height: 200px;
 }
 .header-top {
-    background: url(../images/banner1.jpg);
+    
     background-size: 100% 100%;
     background-repeat: no-repeat;
     padding-bottom: 90px;
+    padding-top: 0px;
 }
 .header {
     position: absolute;
@@ -991,6 +995,7 @@ nav.main-menu {
     text-transform: uppercase;
     color: #fff;
     line-height: 40px;
+    padding-top: 0px;
 }
 .banner_Client {
     position: relative;
@@ -999,31 +1004,39 @@ nav.main-menu {
     text-align: left;
 }
 .text-bg span {
-    color: #020607;
+    color: #ffffff;
     font-weight: bold;
     font-size: 55px;
     line-height: 50px;
     text-transform: uppercase;
 }
 .text-bg h1 {
-    color: #4ac9f0;
-    padding-top: 20px;
+    color: #A2D0C1;
+    padding-top: 300px;
     font-size: 69px;
     line-height: 80px;
     padding-bottom: 25px;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px #000000;
+
 }
 .text-bg p {
-    color: #020607;
+    color: #F8DC81;
     font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 2px #000000;
+
 }
 .text-bg a {
     text-align: center;
     margin-top: 30px;
     font-size: 16px;
-    background-color: #020607;
-    color: #fff;
+    background-color: #EFF7E1;
+    color: rgb(0, 0, 0);
     padding: 10px 0px;
     width: 100%;
     max-width: 190px;
@@ -1032,13 +1045,46 @@ nav.main-menu {
     display: inline-block;
 }
 .text-bg a:hover {
-    background-color: #4ac9f0;
+    background-color: #A2D0C1;
     color: #fff;
+}
+/**Imagenes gif **/
+.header-top{
+    width: 100%;
+    height: 600px;
+    animation: header-top 10s infinite linear alternate;
+    background-size: 100% 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes header-top{
+    0%, 20%{
+        background-image: url(Rubros/gasista.jpg);
+    }
+    25%, 45%{
+        background-image: url(Rubros/soldador.png);
+    }
+    50%, 70%{
+        background-image: url(Rubros/peluquero_de_perros.jpg);
+    }
+    75%, 100%{
+        background-image: url(Rubros/pastelero.png);
+    }
+}
+.capa{
+    width: 100%;
+    height: 100%;
+    position: absolute ;
+    top: 0;
+    left: 0;
+    
 }
 .text {
     position: inherit;
     text-align: left;
-    background: #0fbbad;
+    background: #A2D0C1;
     width: 100%;
     bottom: auto;
     padding: 0;
@@ -1060,7 +1106,7 @@ nav.main-menu {
     width: 18px;
     height: 18px;
     border-radius: 20px;
-    background: #4ac9f0;
+    background: #A2D0C1;
     margin: 5px 0px;
 }
 .carousel-indicators .active {
@@ -1082,12 +1128,12 @@ nav.main-menu {
      float: left;
      padding-right: 15px;
      font-weight: bold;
-     border-right: #4ac9f0 solid 2px;
+     border-right: #A2D0C1 solid 2px;
 }
 .wellcome .titlepage h2::after {
     position: absolute;
     content: "";
-    background: #4ac9f0;
+    background: #A2D0C1;
     width: 100px;
     bottom: -10px;
     left: 0;
@@ -1121,7 +1167,7 @@ nav.main-menu {
     margin-top: 50px;
 }
 .read_more:hover {
-    background: #4ac9f0;
+    background: #A2D0C1;
     color: #fff;
 }
 
@@ -1147,6 +1193,7 @@ nav.main-menu {
 }
 .ourwork .titlepage h2 {
     font-weight: bold;
+    color: #F8DC81;
 }
 .ourwork .titlepage h2::after {
     position: absolute;
@@ -1245,3 +1292,4 @@ nav.main-menu {
 }
 
 /** end Better **/
+
