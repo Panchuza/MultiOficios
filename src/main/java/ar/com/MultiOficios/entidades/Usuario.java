@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 public class Usuario {
@@ -26,7 +27,8 @@ public class Usuario {
     private String email;
     private String password;
     
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = ISO.DATE)
     private Date fechaDeNacimiento;
     
     @Temporal(TemporalType.TIMESTAMP)
