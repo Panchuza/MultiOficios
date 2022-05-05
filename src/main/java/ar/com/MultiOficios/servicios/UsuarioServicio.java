@@ -50,8 +50,7 @@ public class UsuarioServicio implements UserDetailsService{
         usuarioRepositorio.save(usuario);
     }
     
-    public void darDeBajaUsuario(String id, String nombre) throws ErrorServicio{    
-        validar(nombre);
+    public void darDeBajaUsuario(String id) throws ErrorServicio{    
         Usuario usuario = buscarPorId(id);
         if (usuario.getFechaBajaUsuario() == null) {
             usuario.setFechaBajaUsuario(new Date());
