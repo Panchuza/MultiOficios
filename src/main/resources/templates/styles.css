@@ -260,7 +260,7 @@ button {
 }
 
 .white_heading_main h2 {
-    color: #EFF7E1f;
+    color: #EFF7E1;
 }
 
 .small_main_heading {
@@ -1182,7 +1182,7 @@ nav.main-menu {
     margin-bottom: 20px;
 }
 .ourwork {
-    background: #214151;
+    background: #A2D0C1;
     padding: 90px 0 70px 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1194,11 +1194,12 @@ nav.main-menu {
 .ourwork .titlepage h2 {
     font-weight: bold;
     color: #F8DC81;
+    text-shadow: 2px 2px 2px #000;
 }
 .ourwork .titlepage h2::after {
     position: absolute;
     content: "";
-    background: #A2D0C1;
+    background: #EFF7E1;
     width: 100px;
     bottom: -10px;
     left: 0;
@@ -1293,3 +1294,16 @@ nav.main-menu {
 
 /** end Better **/
 
+.ourG {
+    width: 500px;
+    height: 500px;
+}
+
+.ourC{
+    width: 500px;
+    height: 500px;
+}
+.ourB{
+    width: 700px;
+    height: 700px;
+}
