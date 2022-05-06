@@ -4,18 +4,14 @@ import ar.com.MultiOficios.entidades.Usuario;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.servicios.UsuarioServicio;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javax.management.Query.attr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,19 +35,18 @@ public class UsuarioControlador {
     @PostMapping("form")
     public String crearUsuario(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String confirmarPassword, @RequestParam Date fechaDeNacimiento , @RequestParam RolUsuario rolUsuario) {
+            @RequestParam String confirmarPassword, 
+            @RequestParam RolUsuario rolUsuario, RedirectAttributes attr) {
 
         try {
+            
+            usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
-            usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, fechaDeNacimiento
-                    , rolUsuario);
-
-            modelo.put("exito", "se registro el usuario'" + nombre + "' correctamente");
-
+            attr.addFlashAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
         } catch (Exception e) {
-            modelo.put("error", e.getMessage());
+            attr.addFlashAttribute("error", e.getMessage());
         }
-        return "redirect:/usuario/listarUsuarios";
+        return "redirect:/usuario/form";
     }
 
     @GetMapping("/listarUsuarios")
@@ -87,8 +82,8 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/editarUsuario")
-    public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre, 
-            @RequestParam(required = false) String apellido, @RequestParam(required = false) String email, 
+    public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String apellido, @RequestParam(required = false) String email,
             Date fechaModificacionUsuario, ModelMap model) throws Exception {
         try {
             usuarioServicio.modificarUsuario(id, nombre, apellido, email, fechaModificacionUsuario);
@@ -100,8 +95,9 @@ public class UsuarioControlador {
         return "redirect:/usuario/listarUsuarios";
 
     }
+
     @GetMapping("/eliminarUsuario/{id}")
-    public String eliminarUsuario(@PathVariable("id") String id, RedirectAttributes attr) throws Exception  {
+    public String eliminarUsuario(@PathVariable("id") String id, RedirectAttributes attr) throws Exception {
         try {
             usuarioServicio.eliminarUsuario(id);
             attr.addFlashAttribute("exito", "Usuario eliminado");
