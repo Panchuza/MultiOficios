@@ -3,17 +3,15 @@ package ar.com.MultiOficios.entidades;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.enums.ValoracionProveedores;
 import java.util.Date;
-import javax.persistence.Entity;
+import java.util.List;
+import javax.persistence.*;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 public class Usuario {
@@ -27,10 +25,6 @@ public class Usuario {
     private String email;
     private String password;
     
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(iso = ISO.DATE)
-    private Date fechaDeNacimiento;
-    
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAltaUsuario;
     
@@ -43,30 +37,32 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private RolUsuario rolUsuario;
     
-//    @OneToMany
-//    private Publicacion publicacion;
+    @OneToMany
+    private List<Publicacion> publicacion;
+    @ManyToOne
+    private Zona zona;
     
     @Enumerated(EnumType.STRING)
     private ValoracionProveedores valoracionPoveedores; 
     
-//    
-//    @ManyToOne
-//    private Zona zona;
+    
 
     public Usuario() {
     }
-    
-    public Usuario(String nombre, String apellido, String email, String password, Date fechaDeNacimiento, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, Publicacion publicacion) {
+
+    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, List<Publicacion> publicacion, Zona zona, ValoracionProveedores valoracionPoveedores) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
-        this.fechaDeNacimiento = fechaDeNacimiento;
         this.fechaAltaUsuario = fechaAltaUsuario;
         this.fechaBajaUsuario = fechaBajaUsuario;
         this.fechaModificacionUsuario = fechaModificacionUsuario;
         this.rolUsuario = rolUsuario;
-//        this.publicacion = publicacion;
+        this.publicacion = publicacion;
+        this.zona = zona;
+        this.valoracionPoveedores = valoracionPoveedores;
     }
     
     /**
@@ -126,20 +122,6 @@ public class Usuario {
     }
 
     /**
-     * @return the fechaDeNacimiento
-     */
-    public Date getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    /**
-     * @param fechaDeNacimiento the fechaDeNacimiento to set
-     */
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
-    }
-
-    /**
      * @return the fechaAltaUsuario
      */
     public Date getFechaAltaUsuario() {
@@ -194,21 +176,7 @@ public class Usuario {
     public void setRolUsuario(RolUsuario rolUsuario) {
         this.rolUsuario = rolUsuario;
     }
-
-    /**
-     * @return the publicacion
-     */
-//    public Publicacion getPublicacion() {
-//        return publicacion;
-//    }
-//
-//    /**
-//     * @param publicacion the publicacion to set
-//     */
-//    public void setPublicacion(Publicacion publicacion) {
-//        this.publicacion = publicacion;
-//    }
-
+    
     /**
      * @return the password
      */
@@ -221,6 +189,48 @@ public class Usuario {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the publicacion
+     */
+    public List<Publicacion> getPublicacion() {
+        return publicacion;
+    }
+
+    /**
+     * @param publicacion the publicacion to set
+     */
+    public void setPublicacion(List<Publicacion> publicacion) {
+        this.publicacion = publicacion;
+    }
+
+    /**
+     * @return the zona
+     */
+    public Zona getZona() {
+        return zona;
+    }
+
+    /**
+     * @param zona the zona to set
+     */
+    public void setZona(Zona zona) {
+        this.zona = zona;
+    }
+
+    /**
+     * @return the valoracionPoveedores
+     */
+    public ValoracionProveedores getValoracionPoveedores() {
+        return valoracionPoveedores;
+    }
+
+    /**
+     * @param valoracionPoveedores the valoracionPoveedores to set
+     */
+    public void setValoracionPoveedores(ValoracionProveedores valoracionPoveedores) {
+        this.valoracionPoveedores = valoracionPoveedores;
     }
     
     
