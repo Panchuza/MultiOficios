@@ -32,7 +32,8 @@ public class UsuarioServicio implements UserDetailsService{
     
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
-    public void crearUsuario(String nombre, String apellido, String email, String password, String confirmarPassword , RolUsuario rolUsuario) throws Exception {
+    public void crearUsuario(String nombre, String apellido, String email, 
+            String password, String confirmarPassword , RolUsuario rolUsuario) throws Exception {
         
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
@@ -42,7 +43,6 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setApellido(apellido);
         usuario.setEmail(email);
         usuario.setPassword(passwordEncriptado);
-//        usuario.setFechaDeNacimiento(fechaDeNacimiento);
         usuario.setFechaAltaUsuario(new Date());
         usuario.setFechaBajaUsuario(null);
         usuario.setRolUsuario(rolUsuario);
@@ -60,7 +60,7 @@ public class UsuarioServicio implements UserDetailsService{
         }
     }
     
-    public void modificarUsuario(String id, String nombre, String apellido, String email) throws ErrorServicio {
+    public void modificarUsuario(String id, String nombre, String apellido, String email, Date fechaModificacionUsuario) throws ErrorServicio {
 
         validar(nombre);
         Usuario usuario = buscarPorId(id);
@@ -68,6 +68,7 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
+        usuario.setFechaModificacionUsuario(new Date());
 
         usuarioRepositorio.save(usuario);
     }
