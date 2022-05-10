@@ -2,7 +2,6 @@ package ar.com.MultiOficios.servicios;
 
 import ar.com.MultiOficios.entidades.Usuario;
 import ar.com.MultiOficios.enums.RolUsuario;
-import ar.com.MultiOficios.enums.Provincia;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class UsuarioServicio implements UserDetailsService{
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
     public void crearUsuario(String nombre, String apellido, String email, 
-            String password, String confirmarPassword , RolUsuario rolUsuario, Provincia provincia) throws Exception {
+            String password, String confirmarPassword , RolUsuario rolUsuario) throws Exception {
         
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
@@ -47,7 +46,6 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setFechaAltaUsuario(new Date());
         usuario.setFechaBajaUsuario(null);
         usuario.setRolUsuario(rolUsuario);
-        usuario.setProvincia(provincia);
 
         usuarioRepositorio.save(usuario);
     }

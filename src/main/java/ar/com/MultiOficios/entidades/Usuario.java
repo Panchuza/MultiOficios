@@ -1,6 +1,5 @@
 package ar.com.MultiOficios.entidades;
 
-import ar.com.MultiOficios.enums.Provincia;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.enums.ValoracionProveedores;
 import java.util.Date;
@@ -37,9 +36,7 @@ public class Usuario {
     
     @Enumerated(EnumType.STRING)
     private RolUsuario rolUsuario;
-    
-    @Enumerated(EnumType.STRING)
-    private Provincia provincia;
+
     
     @OneToMany
     private List<Publicacion> publicacion;
@@ -54,7 +51,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, Provincia provincia,  List<Publicacion> publicacion, Zona zona, ValoracionProveedores valoracionPoveedores) {
+    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, List<Publicacion> publicacion, Zona zona, ValoracionProveedores valoracionPoveedores) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -64,7 +61,6 @@ public class Usuario {
         this.fechaBajaUsuario = fechaBajaUsuario;
         this.fechaModificacionUsuario = fechaModificacionUsuario;
         this.rolUsuario = rolUsuario;
-        this.provincia = provincia;
         this.publicacion = publicacion;
         this.zona = zona;
         this.valoracionPoveedores = valoracionPoveedores;
@@ -182,19 +178,6 @@ public class Usuario {
         this.rolUsuario = rolUsuario;
     }
     
-    /**
-     * @return the provincia
-     */
-    public Provincia getProvincia() {
-        return provincia;
-    }
-
-    /**
-     * @param provincia the provincia to set
-     */
-    public void setProvincia(Provincia provincia) {
-        this.provincia = provincia;
-    }
     
     /**
      * @return the password

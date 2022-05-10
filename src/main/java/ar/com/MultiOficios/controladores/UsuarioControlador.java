@@ -1,7 +1,6 @@
 package ar.com.MultiOficios.controladores;
 
 import ar.com.MultiOficios.entidades.Usuario;
-import ar.com.MultiOficios.enums.Provincia;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.servicios.UsuarioServicio;
@@ -39,16 +38,15 @@ public class UsuarioControlador {
     public String crearUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String confirmarPassword, 
-            @RequestParam RolUsuario rolUsuario,
-            @RequestParam Provincia provincia, RedirectAttributes attr) {
+            @RequestParam RolUsuario rolUsuario, RedirectAttributes attr) {
 
         try {
             
-            usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario, provincia);
+            usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
-            attr.addFlashAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
+            attr.addAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
         } catch (Exception e) {
-            attr.addFlashAttribute("error", e.getMessage());
+            attr.addAttribute("error", e.getMessage());
         }
         return "redirect:/usuario/form";
     }
@@ -64,10 +62,10 @@ public class UsuarioControlador {
     public String bajaUsuario(@PathVariable("id") String id, RedirectAttributes attr) {
         try {
             usuarioServicio.darDeBajaUsuario(id);
-            attr.addFlashAttribute("exito", "Usuario dado de baja");
+            attr.addAttribute("exito", "Usuario dado de baja");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            attr.addFlashAttribute("error", ex.getMessage());
+            attr.addAttribute("error", ex.getMessage());
         }
         return "redirect:/usuario/listarUsuarios";
     }
@@ -91,10 +89,10 @@ public class UsuarioControlador {
             Date fechaModificacionUsuario, ModelMap model, RedirectAttributes attr) throws Exception {
         try {
             usuarioServicio.modificarUsuario(id, nombre, apellido, email, fechaModificacionUsuario);
-            attr.addFlashAttribute("exito", "Usuario editado correctamente");
+            attr.addAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            attr.addFlashAttribute("error", ex.getMessage());;
+            attr.addAttribute("error", ex.getMessage());;
         }
         return "redirect:/usuario/listarUsuarios";
 
@@ -104,10 +102,10 @@ public class UsuarioControlador {
     public String eliminarUsuario(@PathVariable("id") String id, RedirectAttributes attr) throws Exception {
         try {
             usuarioServicio.eliminarUsuario(id);
-            attr.addFlashAttribute("exito", "Usuario eliminado");
+            attr.addAttribute("exito", "Usuario eliminado");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            attr.addFlashAttribute("error", ex.getMessage());
+            attr.addAttribute("error", ex.getMessage());
         }
         return "redirect:/usuario/listarUsuarios";
     }

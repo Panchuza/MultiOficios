@@ -35,7 +35,6 @@
                 <th>Fecha Alta</th>
                 <th>Fecha Baja</th>
                 <th>Rol</th>
-                <th>Provincia</th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +45,6 @@
                 <td th:text="${usuario.fechaAltaUsuario}"></td>
                 <td th:text="${usuario.fechaBajaUsuario}"></td>
                 <td th:text="${usuario.rolUsuario}"></td>
-                <td th:text="${usuario.provincia}"></td>
                 <td>
                     <div class="d-grid gap-2 d-md-block">
                         <a class="btn btn-secondary" th:href="@{/usuario/editarUsuario/} + ${usuario.id}">Editar Datos</a>
