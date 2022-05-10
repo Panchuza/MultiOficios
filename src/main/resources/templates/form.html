@@ -10,7 +10,7 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
             />
-        
+
         <title>Formulario</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -79,6 +79,15 @@
                 <label for="formGroupExampleInput5" class="form-label">Confirmar Contraseña</label>
                 <input th:text="${confirmarPassword}" type="text" name="confirmarPassword" class="form-control" id="formGroupExampleInput5" placeholder="Confirmar contraseña...">
             </div>
+            <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
+            <div class="mb-3">
+                <label>Seleccione provincia</label>
+                <select  name="provincia" class="form-select" aria-label="Default select example">
+                    <option  th:each="provincia : ${T(ar.com.MultiOficios.enums.Provincia).values()}" th:value="${provincia}" 
+                             th:text="${provincia}"></option>
+                </select>
+            </div>
+            <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
 
             <div class="mb-3">
                 <label>Seleccione Rol</label>
@@ -87,9 +96,10 @@
                              th:text="${rolUsuario}"></option>
                 </select>
             </div>
-            <button class="btn btn-primary btn-lg" id="btt">Crear</button>            
+            <button class="btn btn-success">Crear</button>
+            <button class="btn btn-success"><a th:href="@{/}">Volver</a></button>            
         </form>
-        
+
         <!-- end ourwork -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

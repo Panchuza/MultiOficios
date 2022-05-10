@@ -13,22 +13,18 @@ public class Zona {
     @GenericGenerator(name = "uuid" , strategy = "uuid2")
     private String id;
     private int codigoPostal;
-    private String provincia;
     private int numero;
     private String calle;
-    private String municipio;
     private String ciudad;
 
     public Zona() {
     }
 
-    public Zona(String id, int codigoPostal, String provincia, int numero, String calle, String municipio, String ciudad) {
+    public Zona(String id, int codigoPostal, int numero, String calle, String ciudad) {
         this.id = id;
         this.codigoPostal = codigoPostal;
-        this.provincia = provincia;
         this.numero = numero;
         this.calle = calle;
-        this.municipio = municipio;
         this.ciudad = ciudad;
     }
 
@@ -62,20 +58,6 @@ public class Zona {
     }
 
     /**
-     * @return the provincia
-     */
-    public String getProvincia() {
-        return provincia;
-    }
-
-    /**
-     * @param provincia the provincia to set
-     */
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    /**
      * @return the numero
      */
     public int getNumero() {
@@ -101,20 +83,6 @@ public class Zona {
      */
     public void setCalle(String calle) {
         this.calle = calle;
-    }
-
-    /**
-     * @return the municipio
-     */
-    public String getMunicipio() {
-        return municipio;
-    }
-
-    /**
-     * @param municipio the municipio to set
-     */
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
     }
 
     /**

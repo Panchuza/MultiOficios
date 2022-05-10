@@ -1,9 +1,11 @@
 package ar.com.MultiOficios.controladores;
 
 import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.enums.Provincia;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.servicios.UsuarioServicio;
+import ar.com.MultiOficios.servicios.ZonaServicio;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,22 +27,24 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-//    @Autowired
-//    private RolUsuario rolUsuario;
+    @Autowired
+    private ZonaServicio zonaServicio;
+    
     @GetMapping("form")
     public String form() {
         return "form.html";
     }
 
     @PostMapping("form")
-    public String crearUsuario(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido,
+    public String crearUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String confirmarPassword, 
-            @RequestParam RolUsuario rolUsuario, RedirectAttributes attr) {
+            @RequestParam RolUsuario rolUsuario,
+            @RequestParam Provincia provincia, RedirectAttributes attr) {
 
         try {
             
-            usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
+            usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario, provincia);
 
             attr.addFlashAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
         } catch (Exception e) {
@@ -84,13 +88,13 @@ public class UsuarioControlador {
     @PostMapping("/editarUsuario")
     public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre,
             @RequestParam(required = false) String apellido, @RequestParam(required = false) String email,
-            Date fechaModificacionUsuario, ModelMap model) throws Exception {
+            Date fechaModificacionUsuario, ModelMap model, RedirectAttributes attr) throws Exception {
         try {
             usuarioServicio.modificarUsuario(id, nombre, apellido, email, fechaModificacionUsuario);
-            model.addAttribute("exito", "Usuario editado correctamente");
+            attr.addFlashAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            model.addAttribute("error", "Error inesperado");
+            attr.addFlashAttribute("error", ex.getMessage());;
         }
         return "redirect:/usuario/listarUsuarios";
 
