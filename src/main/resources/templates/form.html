@@ -79,15 +79,6 @@
                 <label for="formGroupExampleInput5" class="form-label">Confirmar Contraseña</label>
                 <input th:text="${confirmarPassword}" type="text" name="confirmarPassword" class="form-control" id="formGroupExampleInput5" placeholder="Confirmar contraseña...">
             </div>
-            <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
-            <div class="mb-3">
-                <label>Seleccione provincia</label>
-                <select  name="provincia" class="form-select" aria-label="Default select example">
-                    <option  th:each="provincia : ${T(ar.com.MultiOficios.enums.Provincia).values()}" th:value="${provincia}" 
-                             th:text="${provincia}"></option>
-                </select>
-            </div>
-            <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
 
             <div class="mb-3">
                 <label>Seleccione Rol</label>

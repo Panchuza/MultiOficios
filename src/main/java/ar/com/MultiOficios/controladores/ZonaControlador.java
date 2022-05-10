@@ -26,12 +26,13 @@ public class ZonaControlador {
 
     @PostMapping("formZona/{id}")
     public String crearZona(@PathVariable("id") String id, @RequestParam int codigoPostal, @RequestParam String ciudad,
-            @RequestParam String calle, @RequestParam int numero, RedirectAttributes attr) throws ErrorServicio {
+            @RequestParam String calle, @RequestParam int numero, 
+            @RequestParam String provincia, RedirectAttributes attr) throws ErrorServicio {
 
                 
         try {
             
-            zonaServicio.crearZona(0, ciudad, calle, 0);
+            zonaServicio.crearZona(0, ciudad, calle, 0, provincia);
             
             attr.addFlashAttribute("exito", "se registro la zona correctamente");
         } catch (Exception e) {

@@ -16,16 +16,18 @@ public class Zona {
     private int numero;
     private String calle;
     private String ciudad;
+    private String provincia;
 
     public Zona() {
     }
 
-    public Zona(String id, int codigoPostal, int numero, String calle, String ciudad) {
+    public Zona(String id, int codigoPostal, int numero, String calle, String ciudad, String provincia) {
         this.id = id;
         this.codigoPostal = codigoPostal;
         this.numero = numero;
         this.calle = calle;
         this.ciudad = ciudad;
+        this.provincia = provincia;
     }
 
     
@@ -97,6 +99,14 @@ public class Zona {
      */
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
     }
     
     
