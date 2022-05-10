@@ -2,6 +2,7 @@ package ar.com.MultiOficios.servicios;
 
 import ar.com.MultiOficios.entidades.Usuario;
 import ar.com.MultiOficios.enums.RolUsuario;
+import ar.com.MultiOficios.enums.Provincia;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class UsuarioServicio implements UserDetailsService{
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
     public void crearUsuario(String nombre, String apellido, String email, 
-            String password, String confirmarPassword , RolUsuario rolUsuario) throws Exception {
+            String password, String confirmarPassword , RolUsuario rolUsuario, Provincia provincia) throws Exception {
         
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
@@ -46,6 +47,7 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setFechaAltaUsuario(new Date());
         usuario.setFechaBajaUsuario(null);
         usuario.setRolUsuario(rolUsuario);
+        usuario.setProvincia(provincia);
 
         usuarioRepositorio.save(usuario);
     }
@@ -60,9 +62,9 @@ public class UsuarioServicio implements UserDetailsService{
         }
     }
     
-    public void modificarUsuario(String id, String nombre, String apellido, String email, Date fechaModificacionUsuario) throws ErrorServicio {
+    public void modificarUsuario(String id, String nombre, String apellido, String email, Date fechaModificacionUsuario) throws ErrorServicio, Exception {
 
-        validar(nombre);
+        validarDatos2(nombre, apellido, email);
         Usuario usuario = buscarPorId(id);
 
         usuario.setNombre(nombre);
@@ -142,10 +144,18 @@ public class UsuarioServicio implements UserDetailsService{
             throw new Exception("Las contraseñas deben ser iguales");
         }
     }
-    public void validar(String nombre) throws ErrorServicio {
-
+    public void validarDatos2(String nombre, String apellido, String email) throws Exception {
         if (nombre == null || nombre.isEmpty()) {
-            throw new ErrorServicio("El nombre no puede ser nulo");
+            throw new Exception("Error: El nombre del Usuario no puede ser nulo");
+        }
+        if (apellido == null || apellido.isEmpty()) {
+            throw new Exception("Error: El apellido del Usuario no puede ser nulo");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new Exception("Error: El email del Usuario no puede ser nulo");
+        }
+        if(usuarioRepositorio.buscarPorEmail(email) != null){
+            throw new ErrorServicio("Error: El email "+email+" ya se encuentra registrado.");
         }
     }
 //-----------------------------------------VALIDAR LOS DATOS--------------------------------------------------   

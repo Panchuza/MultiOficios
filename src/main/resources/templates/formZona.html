@@ -14,46 +14,35 @@
         <title>Formulario</title>
     </head>
     <body>
-        <form th:action="@{/usuario/form}" method="POST">
+        <form th:action="@{/zona/formZona}" method="POST">
             <h1 th:if="${exito != null}" th:text="${exito}" class="text-success"></h1>
             <h1 th:if="${error!= null}" th:text="${error}" class="text-danger"></h1>
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                <input th:text="${nombre}" type="text" name="nombre" class="form-control" id="formGroupExampleInput" placeholder="Nombre...">
+                <label for="formGroupExampleInput" class="form-label">Codigo Postal</label>
+                <input th:text="${codigoPostal}" type="text" name="codigoPostal" class="form-control" id="formGroupExampleInput" placeholder="Codigo Postal...">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Apellido</label>
-                <input th:text="${apellido}" type="text" name="apellido" class="form-control" id="formGroupExampleInput2" placeholder="Apellido...">
+                <label for="formGroupExampleInput2" class="form-label">Numero</label>
+                <input th:text="${numero}" type="text" name="numero" class="form-control" id="formGroupExampleInput2" placeholder="Numero...">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput3" class="form-label">Email</label>
-                <input th:text="${email}" type="text" name="email" class="form-control" id="formGroupExampleInput3" placeholder="Email...">
+                <label for="formGroupExampleInput3" class="form-label">Calle</label>
+                <input th:text="${calle}" type="text" name="calle" class="form-control" id="formGroupExampleInput3" placeholder="Calle...">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput4" class="form-label">Contraseña</label>
-                <input th:text="${password}" type="text" name="password" class="form-control" id="formGroupExampleInput4" placeholder="Contraseña...">
-            </div>
-            <div class="mb-3">
-                <label for="formGroupExampleInput5" class="form-label">Confirmar Contraseña</label>
-                <input th:text="${confirmarPassword}" type="text" name="confirmarPassword" class="form-control" id="formGroupExampleInput5" placeholder="Confirmar contraseña...">
+                <label for="formGroupExampleInput4" class="form-label">Ciudad</label>
+                <input th:text="${ciudad}" type="text" name="ciudad" class="form-control" id="formGroupExampleInput4" placeholder="Ciudad...">
             </div>
             <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
-            <div class="mb-3">
+<!--            <div class="mb-3">
                 <label>Seleccione provincia</label>
                 <select  name="provincia" class="form-select" aria-label="Default select example">
                     <option  th:each="provincia : ${T(ar.com.MultiOficios.enums.Provincia).values()}" th:value="${provincia}" 
                              th:text="${provincia}"></option>
                 </select>
-            </div>
+            </div>-->
             <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
 
-            <div class="mb-3">
-                <label>Seleccione Rol</label>
-                <select  name="rolUsuario" class="form-select" aria-label="Default select example">
-                    <option  th:each="rolUsuario : ${T(ar.com.MultiOficios.enums.RolUsuario).values()}" th:value="${rolUsuario}" 
-                             th:text="${rolUsuario}"></option>
-                </select>
-            </div>
             <button class="btn btn-success">Crear</button>
             <button class="btn btn-success"><a th:href="@{/}">Volver</a></button>            
         </form>
