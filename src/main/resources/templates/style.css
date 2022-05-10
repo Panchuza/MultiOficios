@@ -1,4 +1,62 @@
-body{
+nav {
+     background-color: transparent;
+}
+
+.navbar-brand {
+     margin-left: 400px;
+}
+
+#nav {
+     color: #F8DC81;
+     float: center;
+     font-family: fantasy;
+}
+
+#nav:hover {
+     color: #A2D0C1;
+}
+
+#boton {
+     float: right;
+     margin-left: 50px;
+     margin-top: 0px;
+     background-color: #F8DC81;
+     color: black;
+     text-shadow: whitesmoke;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#boton:hover {
      background-color: #A2D0C1;
-     
+     color: white;
+     text-shadow: 2px 2px 2px rgb(31, 30, 30);
+}
+
+body {
+     background-color: #A2D0C1;
+
+}
+
+form {
+     margin-left: 200px;
+     margin-right: 200px;
+}
+
+#btt {
+     background-color: #F8DC81;
+     color: black;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#btt:hover {
+     background-color: #214151;
+     color: white;
+     text-shadow: 2px 2px 2px rgb(31, 30, 30);
+}
+
+.form-label{
+     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.mb-3{
+     font-family: Georgia, 'Times New Roman', Times, serif;
 }
