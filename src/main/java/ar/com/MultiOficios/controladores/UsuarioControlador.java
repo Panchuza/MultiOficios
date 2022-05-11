@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,7 @@ public class UsuarioControlador {
         return "form.html";
     }
 
+    
     @PostMapping("form")
     public String crearUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
@@ -51,6 +53,7 @@ public class UsuarioControlador {
         return "redirect:/usuario/form";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/listarUsuarios")
     public String listarUsuarios(String id, ModelMap model, @RequestParam(required = false) String query) throws ErrorServicio {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
@@ -58,6 +61,7 @@ public class UsuarioControlador {
         return "listarUsuarios.html";
     }
 
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN'")
     @GetMapping("/bajaUsuario/{id}")
     public String bajaUsuario(@PathVariable("id") String id, RedirectAttributes attr) {
         try {
@@ -70,6 +74,7 @@ public class UsuarioControlador {
         return "redirect:/usuario/listarUsuarios";
     }
 
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN'")
     @GetMapping("/editarUsuario/{id}")
     public String editarUsuario(@PathVariable("id") String id, ModelMap model) {
 
@@ -89,23 +94,24 @@ public class UsuarioControlador {
             Date fechaModificacionUsuario, ModelMap model, RedirectAttributes attr) throws Exception {
         try {
             usuarioServicio.modificarUsuario(id, nombre, apellido, email, fechaModificacionUsuario);
-            attr.addAttribute("exito", "Usuario editado correctamente");
+            attr.addFlashAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            attr.addAttribute("error", ex.getMessage());;
+            attr.addFlashAttribute("error", ex.getMessage());
         }
         return "redirect:/usuario/listarUsuarios";
 
     }
 
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN'")
     @GetMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable("id") String id, RedirectAttributes attr) throws Exception {
         try {
             usuarioServicio.eliminarUsuario(id);
-            attr.addAttribute("exito", "Usuario eliminado");
+            attr.addFlashAttribute("exito", "Usuario eliminado");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            attr.addAttribute("error", ex.getMessage());
+            attr.addFlashAttribute("error", ex.getMessage());
         }
         return "redirect:/usuario/listarUsuarios";
     }

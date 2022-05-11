@@ -25,19 +25,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-
 				.antMatchers("/css/*", "/js/*", "/img/*", "/**","/main/**","/cliente/**","/actividad/**","/login/**", "/glosario/**").permitAll()
 				.and().formLogin()
 					.loginPage("/login") //url donde se va a mostrar el login, tiene que matchear con el controlador
 						.loginProcessingUrl("/logincheck") //url de un Post de Spring, lo tenemos que poner en el form del login
 						.usernameParameter("email") //name del input donde ingresamos el email
 						.passwordParameter("password")//name del input donde ingresamos el password
-						.defaultSuccessUrl("/") //si todo sale bien vamos al index
+						.defaultSuccessUrl("/usuario/listarUsuarios") //si todo sale bien vamos al index
 						.failureUrl("/login?error=error") //si todo sale mal volvemos al login
 						.permitAll()
 				.and().logout()
