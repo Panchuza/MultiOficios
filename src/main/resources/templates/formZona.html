@@ -19,7 +19,7 @@
             <h1 th:if="${error!= null}" th:text="${error}" class="text-danger"></h1>
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Codigo Postal</label>
-                <input th:text="${codigoPostal}" type="text" name="codigoPostal" class="form-control" id="formGroupExampleInput" placeholder="Codigo Postal...">
+                <input th:text="${codigoPostal}" type="number" name="codigoPostal" class="form-control" id="formGroupExampleInput" placeholder="Codigo Postal...">
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput5" class="form-label">Provincia</label>
@@ -35,7 +35,7 @@
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Numero</label>
-                <input th:text="${numero}" type="text" name="numero" class="form-control" id="formGroupExampleInput2" placeholder="Numero...">
+                <input th:text="${numero}" type="number" name="numero" class="form-control" id="formGroupExampleInput2" placeholder="Numero...">
             </div>
 
             <button class="btn btn-success">Crear</button>

@@ -36,7 +36,7 @@ public class ZonaServicio {
     public void validarDatos(int codigoPostal, String ciudad,
             String calle, int numero, String provincia) throws Exception {
 
-        if (codigoPostal == 0 || codigoPostal < 9999) {
+        if (codigoPostal == 0 || codigoPostal > 9999) {
             throw new Exception("Error: El codigo postal del Usuario no puede ser nulo");
         }
         if (ciudad == null || ciudad.isEmpty()) {
