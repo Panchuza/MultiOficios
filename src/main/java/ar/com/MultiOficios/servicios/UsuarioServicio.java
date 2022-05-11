@@ -152,9 +152,9 @@ public class UsuarioServicio implements UserDetailsService{
         if (email == null || email.isEmpty()) {
             throw new Exception("Error: El email del Usuario no puede ser nulo");
         }
-        if(usuarioRepositorio.buscarPorEmail(email) != null){
-            throw new ErrorServicio("Error: El email "+email+" ya se encuentra registrado.");
-        }
+//        if(usuarioRepositorio.buscarPorEmail(email) != null){
+//            throw new ErrorServicio("Error: El email "+email+" ya se encuentra registrado.");
+//        }
     }
 //-----------------------------------------VALIDAR LOS DATOS--------------------------------------------------   
 //---------------------------------------------SEGURIDAD------------------------------------------------------   

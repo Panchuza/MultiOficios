@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class PortalControlador {
 
+    
     @GetMapping("/login")
     public String login() {
         return "login.html";
+    }
+    
+    @GetMapping("/")
+    public String pruebaRol(){
+        return "/login";
     }
 }

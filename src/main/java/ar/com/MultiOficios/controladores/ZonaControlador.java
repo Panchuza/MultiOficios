@@ -28,7 +28,6 @@ public class ZonaControlador {
     public String crearZona(@PathVariable("id") String id, @RequestParam int codigoPostal, @RequestParam String ciudad,
             @RequestParam String calle, @RequestParam int numero, 
             @RequestParam String provincia, RedirectAttributes attr) throws ErrorServicio {
-
                 
         try {
             

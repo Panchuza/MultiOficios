@@ -22,31 +22,21 @@
                 <input th:text="${codigoPostal}" type="text" name="codigoPostal" class="form-control" id="formGroupExampleInput" placeholder="Codigo Postal...">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Numero</label>
-                <input th:text="${numero}" type="text" name="numero" class="form-control" id="formGroupExampleInput2" placeholder="Numero...">
+                <label for="formGroupExampleInput5" class="form-label">Provincia</label>
+                <input th:text="${provincia}" type="text" name="provincia" class="form-control" id="formGroupExampleInput5" placeholder="Provincia...">
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput4" class="form-label">Ciudad</label>
+                <input th:text="${ciudad}" type="text" name="ciudad" class="form-control" id="formGroupExampleInput4" placeholder="Ciudad...">
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput3" class="form-label">Calle</label>
                 <input th:text="${calle}" type="text" name="calle" class="form-control" id="formGroupExampleInput3" placeholder="Calle...">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput4" class="form-label">Ciudad</label>
-                <input th:text="${ciudad}" type="text" name="ciudad" class="form-control" id="formGroupExampleInput4" placeholder="Ciudad...">
+                <label for="formGroupExampleInput2" class="form-label">Numero</label>
+                <input th:text="${numero}" type="text" name="numero" class="form-control" id="formGroupExampleInput2" placeholder="Numero...">
             </div>
-            
-            <div class="mb-3">
-                <label for="formGroupExampleInput5" class="form-label">Provincia</label>
-                <input th:text="${provincia}" type="text" name="provincia" class="form-control" id="formGroupExampleInput5" placeholder="Provincia...">
-            </div>
-            <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
-<!--            <div class="mb-3">
-                <label>Seleccione provincia</label>
-                <select  name="provincia" class="form-select" aria-label="Default select example">
-                    <option  th:each="provincia : ${T(ar.com.MultiOficios.enums.Provincia).values()}" th:value="${provincia}" 
-                             th:text="${provincia}"></option>
-                </select>
-            </div>-->
-            <!------------------------------------------PROVINCIA Y MUNICIPIO------------------------------>
 
             <button class="btn btn-success">Crear</button>
             <button class="btn btn-success"><a th:href="@{/}">Volver</a></button>            
