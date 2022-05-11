@@ -46,9 +46,9 @@ public class UsuarioControlador {
             
             usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
-            attr.addAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
+            attr.addFlashAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
         } catch (Exception e) {
-            attr.addAttribute("error", e.getMessage());
+            attr.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/usuario/form";
     }
