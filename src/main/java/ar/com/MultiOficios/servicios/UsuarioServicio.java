@@ -60,14 +60,13 @@ public class UsuarioServicio implements UserDetailsService{
         }
     }
     
-    public void modificarUsuario(String id, String nombre, String apellido, String email, Date fechaModificacionUsuario) throws ErrorServicio, Exception {
+    public void modificarUsuario(String id, String nombre, String apellido, Date fechaModificacionUsuario) throws ErrorServicio, Exception {
 
-        validarDatos2(nombre, apellido, email);
+        validarDatos2(nombre, apellido);
         Usuario usuario = buscarPorId(id);
 
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
-        usuario.setEmail(email);
         usuario.setFechaModificacionUsuario(new Date());
 
         usuarioRepositorio.save(usuario);
@@ -142,19 +141,14 @@ public class UsuarioServicio implements UserDetailsService{
             throw new Exception("Las contraseñas deben ser iguales");
         }
     }
-    public void validarDatos2(String nombre, String apellido, String email) throws Exception {
+    public void validarDatos2(String nombre, String apellido) throws Exception {
         if (nombre == null || nombre.isEmpty()) {
             throw new Exception("Error: El nombre del Usuario no puede ser nulo");
         }
         if (apellido == null || apellido.isEmpty()) {
             throw new Exception("Error: El apellido del Usuario no puede ser nulo");
         }
-        if (email == null || email.isEmpty()) {
-            throw new Exception("Error: El email del Usuario no puede ser nulo");
-        }
-//        if(usuarioRepositorio.buscarPorEmail(email) != null){
-//            throw new ErrorServicio("Error: El email "+email+" ya se encuentra registrado.");
-//        }
+
     }
 //-----------------------------------------VALIDAR LOS DATOS--------------------------------------------------   
 //---------------------------------------------SEGURIDAD------------------------------------------------------   
