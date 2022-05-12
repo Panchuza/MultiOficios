@@ -18,9 +18,9 @@ public class PortalControlador {
         return "login.html";
     }
     
-    @GetMapping("/pruebaRol")
-    public String pruebaRol() {
-        return "pruebaRol.html";
+    @GetMapping("/logout2")
+    public String logout2() {
+        return "logout2.html";
     }
 
 }

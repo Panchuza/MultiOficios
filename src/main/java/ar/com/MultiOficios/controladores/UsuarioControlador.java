@@ -90,10 +90,10 @@ public class UsuarioControlador {
 
     @PostMapping("/editarUsuario")
     public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) String apellido, @RequestParam(required = false) String email,
-            Date fechaModificacionUsuario, ModelMap model, RedirectAttributes attr) throws Exception {
+            @RequestParam(required = false) String apellido, Date fechaModificacionUsuario, 
+            ModelMap model, RedirectAttributes attr) throws Exception {
         try {
-            usuarioServicio.modificarUsuario(id, nombre, apellido, email, fechaModificacionUsuario);
+            usuarioServicio.modificarUsuario(id, nombre, apellido, fechaModificacionUsuario);
             attr.addFlashAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
