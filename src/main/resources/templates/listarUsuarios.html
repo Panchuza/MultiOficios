@@ -50,14 +50,14 @@
                         <a class="btn btn-secondary" th:href="@{/usuario/editarUsuario/} + ${usuario.id}">Editar Datos</a>
                         <a class="btn btn-warning" th:href="@{/usuario/bajaUsuario/} + ${usuario.id}" >Baja Usuario</a>
                         <a class="btn btn-danger" th:href="@{/usuario/eliminarUsuario/} + ${usuario.id}" >Eliminar Usuario</a>
-                        <a class="btn btn-primary" th:href="@{/zona/formZona/} + ${usuario.id}">Agregar Zona</a>
+                        <!--<a class="btn btn-primary" th:href="@{/zona/formZona/} + ${usuario.id}">Agregar Zona</a>-->
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
     <div class="button_bottom">
-        <button type="button" class="btn btn-secondary btn-l"><a th:href="@{/}">Volver</a></button>
+        <a class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
     </div>
 
     <!----------------------------------------------TEST------------------------------------>
