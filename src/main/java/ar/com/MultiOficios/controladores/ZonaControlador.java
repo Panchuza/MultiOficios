@@ -40,4 +40,8 @@ public class ZonaControlador {
         return "redirect:/zona/formZona";
     }
 
+    @GetMapping("perfil")
+    public String perfil() {
+        return "perfil.html";
+    }
 }

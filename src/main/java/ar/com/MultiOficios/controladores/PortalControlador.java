@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PortalControlador {
 
     
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login.html";
+//    @GetMapping("/perfil")
+//    public String perfil() {
+//        return "perfil.html";
 //    }
 //    
 //    @GetMapping("/")
-//    public String pruebaRol(){
-//        return "/login";
+//    public String perfil(){
+//        return "/perfil";
 //    }
 }
