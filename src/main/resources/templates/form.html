@@ -75,22 +75,16 @@
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput4" class="form-label">Contraseña</label>
-                <input th:text="${password}" type="text" name="password" class="form-control" id="formGroupExampleInput4"
+                <input th:text="${password}" type="password" name="password" class="form-control" id="formGroupExampleInput4"
                     placeholder="Contraseña...">
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput5" class="form-label">Confirmar Contraseña</label>
-                <input th:text="${confirmarPassword}" type="text" name="confirmarPassword" class="form-control"
+                <input th:text="${confirmarPassword}" type="password" name="confirmarPassword" class="form-control"
                     id="formGroupExampleInput5" placeholder="Confirmar contraseña...">
             </div>
 
-            <div class="mb-3">
-                <label>Seleccione Rol</label>
-                <select name="rolUsuario" class="form-select" aria-label="Default select example">
-                    <option th:each="rolUsuario : ${T(ar.com.MultiOficios.enums.RolUsuario).values()}"
-                        th:value="${rolUsuario}" th:text="${rolUsuario}"></option>
-                </select>
-            </div>
+
             <button id="colorbotonform" class="btn btn-success">Crear</button>
             <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
         </form>

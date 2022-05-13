@@ -45,6 +45,6 @@ public class PublicacionControlador {
         } catch (ErrorServicio ex) {
             modelo.put("ErrorServicio", ex.getMessage());
             return "administrarPublicacion.html";
-        }
     }
+}
 }
