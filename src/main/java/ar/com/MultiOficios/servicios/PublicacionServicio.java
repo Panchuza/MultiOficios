@@ -35,7 +35,7 @@ public class PublicacionServicio {
     @Transactional(rollbackFor = {Exception.class})
     public void modificar(String id, String nombre, String descripcion) throws ErrorServicio {
         validar(nombre, descripcion);
-
+    
         Optional<Publicacion> respuesta = publicacionRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
@@ -106,10 +106,10 @@ public class PublicacionServicio {
     
 //------------------------------------------VALIDACION DE DATOS (NOMBRE Y DESCRIPCION)--------------------------------------------------
         public void validar(String nombre, String descripcion) throws ErrorServicio {
-
+    
         if (nombre.isEmpty() || nombre == null) {
             throw new ErrorServicio("El nombre de la publicacion no puede estar vacio");
-        }
+}
 
         if (nombre.isEmpty() || descripcion == null) {
             throw new ErrorServicio("El nombre de la descripcion no puede estar vacio");
