@@ -234,6 +234,6 @@ public class Usuario {
     public void setValoracionPoveedores(ValoracionProveedores valoracionPoveedores) {
         this.valoracionPoveedores = valoracionPoveedores;
     }
-    
-    
-}
+
+
+    }

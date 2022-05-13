@@ -47,9 +47,9 @@
                 <td th:text="${usuario.rolUsuario}"></td>
                 <td>
                     <div class="d-grid gap-2 d-md-block">
-                        <a sec:authorize="hasAnyRole('ROLE_ADMIN')" class="btn btn-secondary" th:href="@{/usuario/editarUsuario/} + ${usuario.id}">Editar Datos</a>
-                        <a sec:authorize="hasAnyRole('ROLE_ADMIN')" class="btn btn-warning" th:href="@{/usuario/bajaUsuario/} + ${usuario.id}" >Baja Usuario</a>
-                        <a sec:authorize="hasAnyRole('ROLE_ADMIN')" class="btn btn-danger" th:href="@{/usuario/eliminarUsuario/} + ${usuario.id}" >Eliminar Usuario</a>
+                        <a class="btn btn-secondary" th:href="@{/usuario/editarUsuario/} + ${usuario.id}">Editar Datos</a>
+                        <a class="btn btn-warning" th:href="@{/usuario/bajaUsuario/} + ${usuario.id}" >Baja Usuario</a>
+                        <a class="btn btn-danger" th:href="@{/usuario/eliminarUsuario/} + ${usuario.id}" >Eliminar Usuario</a>
                     </div>
                 </td>
             </tr>

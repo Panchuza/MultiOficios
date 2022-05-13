@@ -33,7 +33,7 @@
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email" th:value="${usuario.email}">
                 </div>
 
-                <div sec:authorize="hasAnyRole('ROLE_ADMIN')" class="mb-3">
+                <div class="mb-3">
                     <label>Seleccione Rol</label>
                     <select name="rolUsuario" class="form-select" aria-label="Default select example">
                         <option th:each="rolUsuario : ${T(ar.com.MultiOficios.enums.RolUsuario).values()}"
