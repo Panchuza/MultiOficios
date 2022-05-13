@@ -16,44 +16,44 @@
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="../templates/Categorías/logosinfondo.png" alt="" width="300" height="150"
-                            class="d-inline-block align-text-top">
-                    </a>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
-<!--                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/usuario/form">Registrarse</a>
-                            </li>-->
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/login}">Iniciar Sesión</a>
-                            </li>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="../Categorías/logosinfondo.png" alt="" width="300" height="150"
+                         class="d-inline-block align-text-top">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
+<!--                    <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/usuario/form">Registrarse</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/login}">Iniciar Sesión</a>
+                        </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categorías
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/belleza">Belleza y Cuidado Personal</a></li>
-                                    <li><a class="dropdown-item" href="/gatronomia">Gastronomía</a></li>
-                                    <li><a class="dropdown-item" href="/hogar">Hogar y Construcción</a></li>
-                                    <li><a class="dropdown-item" href="/salud">Salud</a></li>
-                                    <li><a class="dropdown-item" href="/mascotas">Mascotas</a></li>
-                                    <li><a class="dropdown-item" href="/otrosservicios">Otros Servicios</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex">
-                            <a class="btn btn-primary" id="boton" href="/contactanos">CONTACTANOS</a>
-                        </form>
-                    </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorías
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/belleza">Belleza y Cuidado Personal</a></li>
+                                <li><a class="dropdown-item" href="/gatronomia">Gastronomía</a></li>
+                                <li><a class="dropdown-item" href="/hogar">Hogar y Construcción</a></li>
+                                <li><a class="dropdown-item" href="/salud">Salud</a></li>
+                                <li><a class="dropdown-item" href="/mascotas">Mascotas</a></li>
+                                <li><a class="dropdown-item" href="/otrosservicios">Otros Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a class="btn btn-primary" id="boton" href="/contactanos">CONTACTANOS</a>
+                    </form>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
         <form th:action="@{/usuario/form}" method="POST">
             <h1 th:if="${exito != null}" th:text="${exito}" class="text-success"></h1>
@@ -92,7 +92,7 @@
                 </select>
             </div>
             <button id="colorbotonform" class="btn btn-success">Crear</button>
-            <a class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
+            <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
         </form>
 
         <!-- end ourwork -->
