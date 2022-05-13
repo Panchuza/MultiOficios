@@ -31,20 +31,16 @@
                             <label for="formGroupExampleInput2" class="form-label">Apellido</label>
                             <input th:text="${apellido}" type="text" name="apellido" class="form-control" id="formGroupExampleInput2"
                                    placeholder="Apellido...">
-
-
                         </div>
                         <div class="row mt-2">
-
                             <label for="formGroupExampleInput3" class="form-label">Email</label>
                             <input th:text="${email}" type="text" name="email" class="form-control" id="formGroupExampleInput3"
                                    placeholder="Email...">
 
 
-
-
-                        </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Guardar</button></div>
+                        </div><br>
+                        <button id="colorbotonform" class="btn btn-success">Guardar</button>
+                        <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
                     </div>
                 </div>
                 <div class="col-md-4">
