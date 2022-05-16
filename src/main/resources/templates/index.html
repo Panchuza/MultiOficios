@@ -1,83 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiOficios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MultiOficios</title>
 
-<body>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="C:\Users\jmbes\Desktop\MultiOficios\src\main\resources\templates\index.html">
-                <img src="Categorías/logosinfondo.png" alt="" width="300" height="150"
-                    class="d-inline-block align-text-top">
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="C:\Users\jmbes\Desktop\MultiOficios\src\main\resources\templates\form.html">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/iniciarsesion">Iniciar Sesión</a>
-                    </li>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Categorías
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/belleza">Belleza y Cuidado Personal</a></li>
-                            <li><a class="dropdown-item" href="/gatronomia">Gastronomía</a></li>
-                            <li><a class="dropdown-item" href="/hogar">Hogar y Construcción</a></li>
-                            <li><a class="dropdown-item" href="/salud">Salud</a></li>
-                            <li><a class="dropdown-item" href="/mascotas">Mascotas</a></li>
-                            <li><a class="dropdown-item" href="/otrosservicios">Otros Servicios</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <a class="btn btn-primary btn-lg" id="boton" href="/contactanos">CONTACTANOS</a>
-                </form>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="Categorías/logosinfondo.png" alt="" width="300" height="150"
+                         class="d-inline-block align-text-top">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/usuario/form}">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/login}">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN') or hasAnyRole('ROLE_USUARIO') or 
+                            hasAnyRole('ROLE_CLIENTE') or hasAnyRole('ROLE_PROOVEDOR')">
+                                 <a class="nav-link active" aria-current="page" th:href="@{/perfil}">Perfil</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN') or hasAnyRole('ROLE_USUARIO') or 
+                            hasAnyRole('ROLE_CLIENTE') or hasAnyRole('ROLE_PROOVEDOR')">
+                            <a class="nav-link active" aria-current="page" th:href="@{/logout}">Salir</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                            <a class="nav-link active" aria-current="page" th:href="@{/usuario/listarUsuarios}">Listar Usuarios</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorías
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/belleza">Belleza y Cuidado Personal</a></li>
+                                <li><a class="dropdown-item" href="/gatronomia">Gastronomía</a></li>
+                                <li><a class="dropdown-item" href="/hogar">Hogar y Construcción</a></li>
+                                <li><a class="dropdown-item" href="/salud">Salud</a></li>
+                                <li><a class="dropdown-item" href="/mascotas">Mascotas</a></li>
+                                <li><a class="dropdown-item" href="/otrosservicios">Otros Servicios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a class="btn btn-primary btn-lg" id="boton" href="/contactanos">CONTACTANOS</a>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
- 
 
-    <section class="slider_section">
-        <div class="banner">
-            <div class="capa">
-                <div class="info">
-                    <div class="text-bg">
-                        <h1> BIENVENIDOS A MULTIOFICIOS </h1>
-                        <p>En multioficios contamos con una amplia gama de servicios en todo el
-                            territorio nacional. Buscamos brindarte la comodidad de ofrecer tus servicios y/o
-                            contratarlos segun tu zona, garantizandote profesionalismo y seguridad. </p>
-                        
+
+        <section class="slider_section">
+            <div class="banner">
+                <div class="capa">
+                    <div class="info">
+                        <div class="text-bg">
+                            <h1> BIENVENIDOS A MULTIOFICIOS </h1>
+                            <p>En multioficios contamos con una amplia gama de servicios en todo el
+                                territorio nacional. Buscamos brindarte la comodidad de ofrecer tus servicios y/o
+                                contratarlos segun tu zona, garantizandote profesionalismo y seguridad. </p>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </section>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-            crossorigin="anonymous"></script>
+                integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-            crossorigin="anonymous"></script>
+                integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
 
-</body>
+    </body>
 
 </html>

@@ -35,12 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						.loginProcessingUrl("/logincheck") //url de un Post de Spring, lo tenemos que poner en el form del login
 						.usernameParameter("email") //name del input donde ingresamos el email
 						.passwordParameter("password")//name del input donde ingresamos el password
-						.defaultSuccessUrl("/usuario/listarUsuarios") //si todo sale bien vamos al index
-						.failureUrl("/login?error=error") //si todo sale mal volvemos al login
+						.defaultSuccessUrl("/") //si todo sale bien vamos al index
+						.failureUrl("/logout2") //si todo sale mal volvemos al login
 						.permitAll()
 				.and().logout()
 					.logoutUrl("/logout") //para deslogearse
-					.logoutSuccessUrl("/l")
+					.logoutSuccessUrl("/")
 					.permitAll()
 				.and().csrf()
 					.disable();
