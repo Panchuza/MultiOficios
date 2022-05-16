@@ -40,20 +40,20 @@ public class UsuarioControlador {
     public String crearUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String confirmarPassword, 
-            @RequestParam RolUsuario rolUsuario, RedirectAttributes attr) {
+            @RequestParam(required = false) RolUsuario rolUsuario, RedirectAttributes attr) {
 
         try {
             
             usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
-            attr.addFlashAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
+            attr.addFlashAttribute("exito", "Se registro el usuario '" + nombre + "' correctamente");
         } catch (Exception e) {
             attr.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/usuario/form";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/listarUsuarios")
     public String listarUsuarios(String id, ModelMap model, @RequestParam(required = false) String query) throws ErrorServicio {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
@@ -61,7 +61,7 @@ public class UsuarioControlador {
         return "listarUsuarios.html";
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN'")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/bajaUsuario/{id}")
     public String bajaUsuario(@PathVariable("id") String id, RedirectAttributes attr) {
         try {
@@ -87,13 +87,13 @@ public class UsuarioControlador {
         }
         return "modificar-usuario.html";
     }
-
+    
     @PostMapping("/editarUsuario")
     public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) String apellido, Date fechaModificacionUsuario, 
+            @RequestParam(required = false) String apellido,@RequestParam(required = false) RolUsuario rolUsuario,Date fechaModificacionUsuario, 
             ModelMap model, RedirectAttributes attr) throws Exception {
         try {
-            usuarioServicio.modificarUsuario(id, nombre, apellido, fechaModificacionUsuario);
+            usuarioServicio.modificarUsuario(id, nombre, apellido, rolUsuario, fechaModificacionUsuario);
             attr.addFlashAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);

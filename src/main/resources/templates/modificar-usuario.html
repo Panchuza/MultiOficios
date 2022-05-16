@@ -33,6 +33,14 @@
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email" th:value="${usuario.email}">
                 </div>
 
+                <div class="mb-3">
+                    <label>Seleccione Rol</label>
+                    <select name="rolUsuario" class="form-select" aria-label="Default select example">
+                        <option th:each="rolUsuario : ${T(ar.com.MultiOficios.enums.RolUsuario).values()}"
+                                th:value="${rolUsuario}" th:text="${rolUsuario}"></option>
+                    </select>
+                </div>
+
                 <div class="alert alert-success" role="alert" th:if="${exito != null}" th:text="${exito}"></div>
                 <div class="alert alert-danger" role="alert" th:if="${error != null}" th:text="${error}"></div>
 

@@ -48,5 +48,8 @@ public class PublicacionControlador {
             
         }
         return "redirect:/listarPublicaciones";
+            modelo.put("ErrorServicio", ex.getMessage());
+            return "administrarPublicacion.html";
     }
+}
 }
