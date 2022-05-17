@@ -11,6 +11,7 @@
     </head>
     <body>         
         <div th:action="@{/perfil}" method="POST" class="container rounded bg-white mt-5 mb-5">
+            <!--<input type="hidden" name="id" th:value="${usuario.id}"/>-->
             <h1 th:if="${exito != null}" th:text="${exito}" class="text-success"></h1>
             <h1 th:if="${error!= null}" th:text="${error}" class="text-danger"></h1>
             <div class="row">
@@ -25,21 +26,26 @@
                         <div class="row mt-2">
 
 
-                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                            <input th:text="${nombre}" type="text" name="nombre" class="form-control" id="formGroupExampleInput"
-                                   placeholder="Nombre...">
-                            <label for="formGroupExampleInput2" class="form-label">Apellido</label>
-                            <input th:text="${apellido}" type="text" name="apellido" class="form-control" id="formGroupExampleInput2"
-                                   placeholder="Apellido...">
-                        </div>
-                        <div class="row mt-2">
-                            <label for="formGroupExampleInput3" class="form-label">Email</label>
-                            <input th:text="${email}" type="text" name="email" class="form-control" id="formGroupExampleInput3"
-                                   placeholder="Email...">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="nombreUsuario">Nombre</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="nombre" th:value="${usuario.nombre}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="apellidoUsuario">Apellido</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="apellido" th:value="${usuario.apellido}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="emailUsuario">Email</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email" th:value="${usuario.email}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="contraseñaUsuario">Contraseña</span>
+                                <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="password" th:value="${usuario.password}">
+                            </div>
 
 
                         </div><br>
-                        <button id="colorbotonform" class="btn btn-success">Guardar</button>
+                        <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Editar</a>
                         <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
                     </div>
                 </div>
