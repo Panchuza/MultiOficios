@@ -50,19 +50,7 @@ public class ZonaControlador {
         }
         return "redirect:/zona/perfil";
     }
+    
 
-//@PostMapping("/editarPerfil")
-//    public String editarUsuarioPerfil(@RequestParam String id, @RequestParam(required = false) String nombre,
-//            @RequestParam(required = false) String apellido,Date fechaModificacionUsuario, 
-//            ModelMap model, RedirectAttributes attr) throws ErrorServicio, Exception {
-//        try {
-//            usuarioServicio.modificarUsuarioPerfil(id, nombre, apellido, fechaModificacionUsuario);
-//            attr.addFlashAttribute("exito", "Usuario editado correctamente");
-//        } catch (ErrorServicio ex) {
-//            Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-//            attr.addFlashAttribute("error", ex.getMessage());
-//        }
-//        return "redirect:/zona/perfil";
-//
-//    }
+
 }
