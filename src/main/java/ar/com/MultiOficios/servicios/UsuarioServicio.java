@@ -73,6 +73,16 @@ public class UsuarioServicio implements UserDetailsService{
 
         usuarioRepositorio.save(usuario);
     }
+    public void modificarUsuarioPerfil(String id, String nombre, String apellido, Date fechaModificacionUsuario) throws ErrorServicio, Exception {
+
+        validarDatos2(nombre, apellido);
+        Usuario usuario = buscarPorId(id);
+        usuario.setNombre(nombre);
+        usuario.setApellido(apellido);
+        usuario.setFechaModificacionUsuario(new Date());
+
+        usuarioRepositorio.save(usuario);
+    }
     
     @Transactional(rollbackFor = {Exception.class})
     public void eliminarUsuario(String id) throws Exception {

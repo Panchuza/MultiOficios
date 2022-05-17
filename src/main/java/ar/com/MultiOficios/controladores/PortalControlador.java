@@ -1,7 +1,11 @@
 package ar.com.MultiOficios.controladores;
 
+import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
 import ar.com.MultiOficios.servicios.UsuarioServicio;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,7 +28,7 @@ public class PortalControlador {
     }
     
     @GetMapping("/login")
-    public String login() {
+    public String login() { 
         return "login.html";
     }
     
@@ -33,9 +37,5 @@ public class PortalControlador {
         return "logout2.html";
     }
     
-    @GetMapping("/perfil")
-    public String perfil() {
-        return "perfil.html";
-    }
 
 }
