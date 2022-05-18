@@ -56,33 +56,22 @@ public class PublicacionControlador {
      @GetMapping("/modificarPublicacion/{id}")
     public String modificarPublicacion(RedirectAttributes attr, ModelMap model, @PathVariable("id") String id
 ) throws ErrorServicio {
-        
-         try {
-
+        try {
             Publicacion publicacion = publicacionServicio.buscarPorId(id);
-            model.put("publicacion",publicacion);
-            
+            model.put("publicacion",publicacion);            
         } catch (ErrorServicio ex) {
-            
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }
             return "modificarPublicacion.html";
     }
     
-    @PostMapping("/ModificarPublicacion")
-    public String modificarPublicacion(RedirectAttributes attr,@RequestParam String id, @RequestParam String nombre, @RequestParam String descripcion) throws ErrorServicio{
-
+    @PostMapping("/modificarPublicacion")
+    public String modificarPublicacion(RedirectAttributes attr,@RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam(required = false) String descripcion) throws ErrorServicio{
         try {
-
-            publicacionServicio.modificar(id,nombre,descripcion);
-            
-            
+            publicacionServicio.modificar(id,nombre,descripcion);            
         } catch (ErrorServicio ex) {
-
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
-            
         }
-         
         return "redirect:/listarPublicaciones";
     }
 }

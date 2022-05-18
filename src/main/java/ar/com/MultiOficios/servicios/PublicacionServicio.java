@@ -34,18 +34,19 @@ public class PublicacionServicio {
 //---------------------------------------------MODIFICAR PUBLICACION--------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
     public void modificar(String id, String nombre, String descripcion) throws ErrorServicio {
-        validar(nombre, descripcion);
-    
+            
         Optional<Publicacion> respuesta = publicacionRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
 
             Publicacion publicacion = respuesta.get();
             publicacion.setNombre(nombre);
-            publicacion.setNombre(descripcion);
+            publicacion.setDescripcion(descripcion);
             publicacion.setFechaModificacionPublicacion(new Date());
 
             publicacionRepositorio.save(publicacion);
+        }else{
+            throw new ErrorServicio("La publicacion no existe");
         }
 
     }
