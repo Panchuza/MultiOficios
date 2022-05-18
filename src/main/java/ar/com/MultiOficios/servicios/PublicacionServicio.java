@@ -105,8 +105,14 @@ public class PublicacionServicio {
     }
     
 //------------------------------------------VALIDACION DE DATOS (NOMBRE Y DESCRIPCION)--------------------------------------------------
+<<<<<<< HEAD
         public void validar(String nombre, String descripcion) throws ErrorServicio {
     
+=======
+        
+public void validar(String nombre, String descripcion) throws ErrorServicio{
+        
+>>>>>>> 9072da7 (contro modificacion)
         if (nombre.isEmpty() || nombre == null) {
             throw new ErrorServicio("El nombre de la publicacion no puede estar vacio");
 }
@@ -116,3 +122,4 @@ public class PublicacionServicio {
         }
     }
 }
+    

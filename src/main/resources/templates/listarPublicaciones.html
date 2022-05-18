@@ -13,6 +13,7 @@
 
 </head>
 
+<<<<<<< HEAD
 <body>
   
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,6 +33,58 @@
               
             </ul>
           </div>  
+=======
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/">Inicio</a>
+                        </li>
+
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        <div class="container">
+            <br>
+            <td><a href="/administrarPublicacion"> <button class="btn btn-success" >Crear Publicacion</button></a></td>
+
+            <table class="table table-sm text" >
+                <h2 style="text-align: center; color: black;">Listar Publicaciones</h2>
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Fecha de Alta</th>
+                        <th scope="col">Fecha de Baja</th>
+                        <th scope="col">Fecha de Modifcacion</th>
+                        <th scope="col">Editar Editorial</th>
+                        <th scope="col">Eliminar Editorial</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="publicacion:${publicaciones}">
+
+                        <td th:text="${publicacion.nombre}">
+                        <td th:text="${publicacion.descripcion}">
+                        <td th:text="${publicacion.fechaAltaPublicacion}">
+                        <td th:text="${publicacion.fechaBajaPublicacion}">
+                        <td th:text="${publicacion.fechaModificacionPublicacion}">
+                        <td><a th:href="@{/modificarPublicacion/} + ${publicacion.id}"> <button class="btn btn-success">Editar</button></a></td>
+                        <td><a href="/"> <button class="btn btn-danger">Dar baja</button></a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+>>>>>>> 9072da7 (contro modificacion)
         </div>
       </nav>
       <div class="container">
@@ -74,7 +127,12 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
 
+<<<<<<< HEAD
   </div>
 </body>
+=======
+
+    </body>
+>>>>>>> 9072da7 (contro modificacion)
 
 </html>

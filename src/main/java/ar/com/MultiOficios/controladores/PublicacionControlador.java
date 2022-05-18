@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,8 +25,13 @@ public class PublicacionControlador {
         return "administrarPublicacion.html";
     }
     
+<<<<<<< HEAD
      //*********Levanta las paginas listadoras****************
     @GetMapping("/listarPublicaciones")
+=======
+     //*********Levanta las pagina listadora****************
+     @GetMapping("/listarPublicaciones")
+>>>>>>> 9072da7 (contro modificacion)
     public String listarPublicaciones(ModelMap modelo) throws ErrorServicio {
         List<Publicacion> publicaciones = publicacionServicio.listarPublicaciones();
         modelo.put("publicaciones", publicaciones);
@@ -45,6 +51,39 @@ public class PublicacionControlador {
         } catch (ErrorServicio ex) {
             modelo.put("ErrorServicio", ex.getMessage());
             return "administrarPublicacion.html";
+    }
+    
+     @GetMapping("/modificarPublicacion/{id}")
+    public String modificarPublicacion(RedirectAttributes attr, ModelMap model, @PathVariable("id") String id
+) throws ErrorServicio {
+        
+         try {
+
+            Publicacion publicacion = publicacionServicio.buscarPorId(id);
+            model.put("publicacion",publicacion);
+            
+        } catch (ErrorServicio ex) {
+            
+            attr.addFlashAttribute("ErrorServicio", ex.getMessage());
+        }
+            return "modificarPublicacion.html";
+    }
+    
+    @PostMapping("/ModificarPublicacion")
+    public String modificarPublicacion(RedirectAttributes attr,@RequestParam String id, @RequestParam String nombre, @RequestParam String descripcion) throws ErrorServicio{
+
+        try {
+
+            publicacionServicio.modificar(id,nombre,descripcion);
+            
+            
+        } catch (ErrorServicio ex) {
+
+            attr.addFlashAttribute("ErrorServicio", ex.getMessage());
+            
+        }
+         
+        return "redirect:/listarPublicaciones";
     }
 }
 }
