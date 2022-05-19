@@ -26,7 +26,7 @@ public class ZonaControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @GetMapping("perfil")
+    @GetMapping("/perfil")
     public String perfil(HttpSession session, ModelMap modelo) {
         
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");

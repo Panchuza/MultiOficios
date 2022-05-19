@@ -24,14 +24,20 @@
                             <h4 class="text-right">Datos de usuario</h4>
                         </div>
 
-                        <input type="hidden" name="id" th:value="${usuario.id}"/>
                         <div class="row mt-2">
 
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="nombreAutor">Nombre</span>
-                                <input type="text" class="form-control" name="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  th:value="${usuario.nombre}" >
-                            </div>
-                            <a id="btvolv" type="input" class="btn btn-primary m-1" th:href="@{/perfilEditar}" role="button">Guardar</a>
+                            <form th:action="@{/perfilEditar}" method="POST">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="nombreAutor">Nombre</span>
+                                    <input type="text" class="form-control" name="nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  th:value="${session.usuariosession.nombre}" >
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="nombreAutor">Apellido</span>
+                                    <input type="text" class="form-control" name="apellido" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  th:value="${session.usuariosession.apellido}" >
+                                </div>
+                                <button id="btvolv" class="btn btn-primary m-1" >Guardar</button>
+                            </form>
+                            
                         </div>
                         <br>
                         <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
