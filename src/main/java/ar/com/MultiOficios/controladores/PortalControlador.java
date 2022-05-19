@@ -7,6 +7,7 @@ import ar.com.MultiOficios.servicios.UsuarioServicio;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,24 +42,37 @@ public class PortalControlador {
         return "logout2.html";
     }
 
-    @GetMapping("/perfilEditar")
-    public String perfilEditar() {
+//    @GetMapping("/perfilEditar")
+//    public String perfil(HttpSession session, ModelMap modelo, RedirectAttributes attr) throws ErrorServicio {
+//
+//        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+//        Usuario u = usuarioServicio.buscarPorId(usuario.getId());
+//        attr.addAttribute("usuario", u);
+//
+//        return "perfilEditar.html";
+//    }
+    @GetMapping("/perfilEditar/{id}")
+    public String perfil(ModelMap model,@PathVariable("id") String id) throws ErrorServicio {
+ 
+       model.put("usuario", usuarioServicio.buscarPorId(id));
+
         return "perfilEditar.html";
     }
-    
-//    @PostMapping("/editarPerfil")
-//    public String editarUsuarioPerfil(@RequestParam String id, @RequestParam(required = false) String nombre,
-//            @RequestParam(required = false) String apellido,Date fechaModificacionUsuario, 
-//            ModelMap model, RedirectAttributes attr) throws ErrorServicio, Exception {
-//        try {
-//            usuarioServicio.modificarUsuarioPerfil(id, nombre, apellido, fechaModificacionUsuario);
-//            attr.addFlashAttribute("exito", "Usuario editado correctamente");
-//        } catch (ErrorServicio ex) {
-//            Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-//            attr.addFlashAttribute("error", ex.getMessage());
-//        }
-//        return "redirect:/zona/perfil";
-//
-//    }
+
+    @PostMapping("/perfilEditar")
+    public String editarUsuarioPerfil(@RequestParam String id, @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String apellido, RedirectAttributes attr) throws ErrorServicio, Exception {
+//            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+//            modelo.put("usuario", usuarioServicio.buscarPorId(usuario.getId()));
+        try {
+            usuarioServicio.modificarUsuarioPerfil(id, nombre, apellido);
+            attr.addFlashAttribute("exito", "Usuario editado correctamente");
+        } catch (ErrorServicio ex) {
+            Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
+            attr.addFlashAttribute("error", ex.getMessage());
+        }
+        return "perfilEditar.html";
+
+    }
 
 }

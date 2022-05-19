@@ -73,7 +73,7 @@ public class UsuarioServicio implements UserDetailsService{
 
         usuarioRepositorio.save(usuario);
     }
-    public void modificarUsuarioPerfil(String id, String nombre, String apellido, Date fechaModificacionUsuario) throws ErrorServicio, Exception {
+    public void modificarUsuarioPerfil(String id, String nombre, String apellido) throws ErrorServicio, Exception {
 
         validarDatos2(nombre, apellido);
         Usuario usuario = buscarPorId(id);
