@@ -6,12 +6,14 @@ import ar.com.MultiOficios.repositorios.PublicacionRepositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PublicacionServicio {
-
+    
+    @Autowired
     public PublicacionRepositorio publicacionRepositorio;
 
 
@@ -23,7 +25,7 @@ public class PublicacionServicio {
         Publicacion publicacion = new Publicacion();
 
         publicacion.setNombre(nombre);
-        publicacion.setNombre(descripcion);
+        publicacion.setDescripcion(descripcion);
         publicacion.setFechaAltaPublicacion(new Date());
         publicacion.setFechaBajaPublicacion(null);
         publicacion.setFechaModificacionPublicacion(null);
@@ -94,31 +96,26 @@ public class PublicacionServicio {
     }
 
 //------------------------------------------LISTAR LAS PUBLICACIONES--------------------------------------------------
-    @Transactional(readOnly = true)
+   @Transactional(readOnly = true)
     public List<Publicacion> listarPublicaciones()throws ErrorServicio{
         List<Publicacion> respuesta=publicacionRepositorio.findAll();
         if (respuesta==null){
             throw new ErrorServicio("No hay Publicaciones");
         }else{
             
-            return publicacionRepositorio.findAll();
-        }
+        return publicacionRepositorio.findAll();
     }
-    
+    }
+
 //------------------------------------------VALIDACION DE DATOS (NOMBRE Y DESCRIPCION)--------------------------------------------------
-<<<<<<< HEAD
-        public void validar(String nombre, String descripcion) throws ErrorServicio {
-    
-=======
         
 public void validar(String nombre, String descripcion) throws ErrorServicio{
         
->>>>>>> 9072da7 (contro modificacion)
         if (nombre.isEmpty() || nombre == null) {
             throw new ErrorServicio("El nombre de la publicacion no puede estar vacio");
 }
 
-        if (nombre.isEmpty() || descripcion == null) {
+        if (descripcion.isEmpty() || descripcion == null) {
             throw new ErrorServicio("El nombre de la descripcion no puede estar vacio");
         }
     }
