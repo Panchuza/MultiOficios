@@ -42,37 +42,39 @@ public class PortalControlador {
         return "logout2.html";
     }
 
-//    @GetMapping("/perfilEditar")
-//    public String perfil(HttpSession session, ModelMap modelo, RedirectAttributes attr) throws ErrorServicio {
-//
-//        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-//        Usuario u = usuarioServicio.buscarPorId(usuario.getId());
-//        attr.addAttribute("usuario", u);
-//
-//        return "perfilEditar.html";
-//    }
-    @GetMapping("/perfilEditar/{id}")
-    public String perfil(ModelMap model,@PathVariable("id") String id) throws ErrorServicio {
- 
-       model.put("usuario", usuarioServicio.buscarPorId(id));
-
+    @GetMapping("/perfilEditar")
+    public String perfil() throws ErrorServicio {
         return "perfilEditar.html";
     }
 
+//    @GetMapping("/perfilEditar/{id}")
+//    public String perfil(ModelMap model,@PathVariable("id") String id) throws ErrorServicio {
+// 
+//       model.put("usuario", usuarioServicio.buscarPorId(id));
+//
+//        return "perfilEditar.html";
+//    }
+//
     @PostMapping("/perfilEditar")
-    public String editarUsuarioPerfil(@RequestParam String id, @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) String apellido, RedirectAttributes attr) throws ErrorServicio, Exception {
-//            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-//            modelo.put("usuario", usuarioServicio.buscarPorId(usuario.getId()));
+    public String editarUsuarioPerfil(HttpSession session, @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String apellido, ModelMap modelo) throws ErrorServicio, Exception {
+
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+
         try {
-            usuarioServicio.modificarUsuarioPerfil(id, nombre, apellido);
-            attr.addFlashAttribute("exito", "Usuario editado correctamente");
+
+            Usuario modificado = usuarioServicio.modificarUsuarioPerfil(usuario.getId(), nombre, apellido);
+            session.setAttribute("usuariosession", modificado);
+            
+            modelo.put("exito", "Usuario editado correctamente");
+
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            attr.addFlashAttribute("error", ex.getMessage());
+            modelo.put("error", ex.getMessage());
+            return "perfilEditar.html";
         }
-        return "perfilEditar.html";
 
+        return "redirect:/";
     }
 
 }

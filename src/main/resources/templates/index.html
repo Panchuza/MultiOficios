@@ -21,13 +21,14 @@
                     <!-- Just an image -->
                     <nav class="navbar-brand">
                         <a class="navbar-brand" href="/">
+                            <h1 th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" ></h1>
                             <img src="imagenesmejoradas/fondo copia.png" width="120" height="120" alt="">
                         </a>
                     </nav>
                     <ul>
                         <li th:if="${session.usuariosession == null}"><a th:href="@{/usuario/form}">Registrarse</a></li>
                         <li th:if="${session.usuariosession == null}"><a th:href="@{/login}">Iniciar Sesión</a></li>
-                        <li th:if="${session.usuariosession != null}"><a th:href="@{zona/perfil}">Perfil</a></li>
+                        <li th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil}">Perfil</a></li>
                         <li th:if="${session.usuariosession != null}"><a th:href="@{/logout}">Salir</a></li>
                         <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/usuario/listarUsuarios}">Listar Usuarios</a></li>
                         <li class="nav-item dropdown">
