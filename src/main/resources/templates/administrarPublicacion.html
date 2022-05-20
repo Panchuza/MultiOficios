@@ -28,7 +28,7 @@
                             <a class="nav-link " aria-current="page" href="/">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listarPublicaciones.html">Listar Publicaciones</a>
+                            <a class="nav-link" href="/listarPublicaciones">Listar Publicaciones</a>
                         </li>
 
                     </ul>
@@ -46,12 +46,13 @@
                 <label for="inputAddress" class="form-label">Descripcion</label>
                 <input type="text" class="form-control" id="inputAddress" name="descripcion" th:text="${descripcion}">
 
-                <p th:if="${ErrorServicio!=null}" th:text="${ErrorServicio}" style="color:red"> </p>
-                <h4 th:if="${exito!=null}" th:text="${exito}"  style="color:green"> </h4>
+
+                <!--<p th:if="${ErrorServicio!=null}" th:text="${ErrorServicio}" style="color:red"> </p>-->
+                <!--<h4 th:if="${exito!=null}" th:text="${exito}"  style="color:green"> </h4>-->
             </div>
 
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button  class="btn btn-success">Guardar</button>
             </div>
         </form>
     </div>

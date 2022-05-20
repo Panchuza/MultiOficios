@@ -17,61 +17,59 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/")
 public class PublicacionControlador {
-    
+
     @Autowired
     private PublicacionServicio publicacionServicio;
-    
-     @GetMapping("/administrarPublicacion")
+
+    @GetMapping("/administrarPublicacion")
     public String administrarPublicacion() {
         return "administrarPublicacion.html";
     }
-    
-     //*********Levanta las pagina listadora****************
-     @GetMapping("/listarPublicaciones")
+
+    //*********Levanta las paginas listadoras****************
+    @GetMapping("/listarPublicaciones")
     public String listarPublicaciones(ModelMap modelo) throws ErrorServicio {
         List<Publicacion> publicaciones = publicacionServicio.listarPublicaciones();
         modelo.put("publicaciones", publicaciones);
         return "listarPublicaciones.html";
     }
-    
-    
-    
+
     @PostMapping("/administrarPublicacion")
-    public String crearPublicacion(RedirectAttributes attr, @RequestParam(required=false) String nombre, @RequestParam(required=false) String descripcion) throws ErrorServicio{
+    public String crearPublicacion(RedirectAttributes attr, @RequestParam(required = false) String nombre, @RequestParam(required = false) String descripcion) throws ErrorServicio {
 
         try {
 
-            publicacionServicio.crear(nombre,descripcion);
+            publicacionServicio.crear(nombre, descripcion);
             attr.addFlashAttribute("exito", "La publicacion" + nombre + " Se cargo exitosamente");
-            
+
         } catch (ErrorServicio ex) {
 
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
-            
+
         }
-         
+
         return "redirect:/listarPublicaciones";
     }
-    
+
     @GetMapping("/modificarPublicacion/{id}")
     public String modificarPublicacion(RedirectAttributes attr, ModelMap model, @PathVariable String id) throws ErrorServicio {
         try {
             Publicacion publicacion = publicacionServicio.buscarPorId(id);
-            model.put("publicacion",publicacion);            
+            model.put("publicacion", publicacion);
         } catch (ErrorServicio ex) {
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }
-            return "modificarPublicacion.html";
+        return "modificarPublicacion.html";
     }
-    
+
     @PostMapping("/modificarPublicacion")
-    public String modificarPublicacion(RedirectAttributes attr,@RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam(required = false) String descripcion) throws ErrorServicio{
+    public String modificarPublicacion(RedirectAttributes attr, @RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam(required = false) String descripcion) throws ErrorServicio {
         try {
-            publicacionServicio.modificar(id,nombre,descripcion);            
+            publicacionServicio.modificar(id, nombre, descripcion);
         } catch (ErrorServicio ex) {
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }
         return "redirect:/listarPublicaciones";
+
     }
 }
-
