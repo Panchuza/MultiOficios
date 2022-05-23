@@ -37,10 +37,11 @@
         </nav>
 
 
-        <form class="row g-3" th:action="@{/modificarPublicacion}" method="POST">
+        <form class="row g-3" th:action="@{/DarDeBajaPublicacion}" method="POST">
 
 
             <div class="col-md-6">
+                <h2 style="text-align: center; color: black;">Dar de baja la publicacion</h2>
                 <div>
                     <label for="inputEmail4" class="form-label">
                         <input type="hidden" name="id" th:value="${publicacion.id}">
