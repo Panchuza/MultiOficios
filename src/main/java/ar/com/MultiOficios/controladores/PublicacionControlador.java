@@ -72,4 +72,39 @@ public class PublicacionControlador {
         return "redirect:/listarPublicaciones";
 
     }
+
+    @GetMapping("/DarDeBajaPublicacion/{id}")
+    public String DarDeBajaPublicacion(RedirectAttributes attr, ModelMap model, @PathVariable String id) throws ErrorServicio {
+        try {
+            Publicacion publicacion = publicacionServicio.buscarPorId(id);
+            model.put("publicacion", publicacion);
+        } catch (ErrorServicio ex) {
+            attr.addFlashAttribute("ErrorServicio", ex.getMessage());
+        }
+        return "DarDeBajaPublicacion.html";
+    }
+
+    @PostMapping("/DarDeBajaPublicacion")
+    public String DarDeBajaPublicacion(RedirectAttributes attr, @RequestParam(required = false) String id) throws ErrorServicio {
+        try {
+            publicacionServicio.darDeBajaPublicacion(id);
+        } catch (ErrorServicio ex) {
+            attr.addFlashAttribute("ErrorServicio", ex.getMessage());
+        }
+        return "redirect:/listarPublicaciones";
+
+    }
+
+    @GetMapping("/eliminarPublicacion/{id}")
+    public String eliminarPublicacion(RedirectAttributes attr, ModelMap model, @PathVariable String id) throws ErrorServicio {
+        try {
+            Publicacion publicacion = publicacionServicio.buscarPorId(id);
+            model.put("publicacion", publicacion);
+            publicacionServicio.eliminarPublicacion(id);
+        } catch (ErrorServicio ex) {
+            attr.addFlashAttribute("ErrorServicio", ex.getMessage());
+        }
+        return "redirect:/listarPublicaciones";
+    }
+
 }
