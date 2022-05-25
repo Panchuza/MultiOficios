@@ -143,40 +143,18 @@ h1 {
 
 /*Navegador Fin//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-
-.container{
-  margin-top: 10%;
-  background-color: #a8c3c4;
+form {
+  margin-left: 300px;
+  margin-right: 300px;
+  padding: 10vmin;
 }
-
-
 .col-md-6{
   width: 100%;
   margin-top: 10%;
   margin-left: 10%;
 }
-.col-12{
+#desc{
+  width: 50%;
   margin-left: 10%;
-}
-.btn-success{
-  margin-top:5%;
-}
-
-.btn-success{
-  margin-top: 0px;
-
-}
-#boton1{
-  background-color: #dfc572;
-  color: black;
-}
-#botonprincipal{
-  background-color: #dfc572;
-  color: black;
-}
-#boton2{
-  background-color: #214151;
-}
-#boton3{
-  background-color: #214151;
+  margin-right: 10%;
 }

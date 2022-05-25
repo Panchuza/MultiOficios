@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Publicaciones</title>
-    <link rel="stylesheet" href="./stylepubl.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/01ced271c2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./stylepubl.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -25,7 +25,7 @@
     <nav class="nav">
         <nav class="navbar-brand">
             <a class="navbar-brand" href="#">
-                <img src="nuevo/img/M.png" alt="">
+                <img src="img/M.png" alt="">
             </a>
         </nav>
         <button class="nav-toggle" aria-label="Abrir menú">
@@ -42,7 +42,11 @@
             <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/logout}">Salir</a></li>
             <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a
                     th:href="@{/listarPublicaciones}">Servicios</a></li>
+            <li class="nav__menu-item"><a>Sobre Nosotros</a>
+            </li>
 
+            <li class="nav__menu-item"><a>Contactenos!</a></li>
+        </ul>
         </ul>
     </nav>
     <!--Fin Navegador----------------------------------------------------------------------------------------------------------->
@@ -54,7 +58,7 @@
     <div class="container">
         <br>
 
-        <td><a th:href="@{/administrarPublicacion}"> <button class="btn btn-success">Crear Publicacion</button></a></td>
+        <td><a th:href="@{/administrarPublicacion}"> <button class="btn btn-success" id="botonprincipal">Crear Publicacion</button></a></td>
 
         <table class="table table-sm text">
             <h2 style="text-align: center; color: black;">Listar Publicaciones</h2>
@@ -80,11 +84,11 @@
                     <td th:text="${publicacion.fechaBajaPublicacion}">
                     <td th:text="${publicacion.fechaModificacionPublicacion}">
                     <td><a th:href="@{/modificarPublicacion/} + ${publicacion.id}"> <button
-                                class="btn btn-success">Editar</button></a></td>
-                    <td><a th:href="@{/DarDeBajaPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger">Dar
+                                class="btn btn-success" id="boton1">Editar</button></a></td>
+                    <td><a th:href="@{/DarDeBajaPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger" id="boton2">Dar
                                 baja</button></a></td>
                     <td><a th:href="@{/eliminarPublicacion/} + ${publicacion.id}"> <button
-                                class="btn btn-danger">Eliminar</button></a></td>
+                                class="btn btn-danger" id="boton3">Eliminar</button></a></td>
                 </tr>
 
             </tbody>
