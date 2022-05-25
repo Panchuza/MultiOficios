@@ -1,0 +1,160 @@
+body {
+    background-color: #A2D0C1;
+  }
+  
+  .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #A2D0C1 50%, #214151 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+  }
+  
+  .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+  }
+  
+  .bg3 {
+    animation-duration: 5s;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(-25%);
+    }
+  
+    100% {
+      transform: translateX(25%);
+    }
+  }
+  
+  /*Navegador/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+  
+  nav ul {
+  
+    list-style: none;
+    margin-top: 0.5%;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  h1 {
+    width: 300px;
+    margin: 500px auto 100px;
+    color: #214151;
+    text-align: right;
+    color: #214151;
+  
+  }
+  
+  
+  .nav {
+    z-index: 7;
+    width: 100%;
+    top: 0;
+    background: #A2D0C1;
+    color: #214151;
+    display: fixed;
+    position: fixed;
+  
+  }
+  
+  .nav a {
+    display: block;
+    padding: 0 30px;
+    line-height: inherit;
+    cursor: pointer;
+    color: #214151;
+  }
+  
+  .nav a:hover {
+    color: #3a6f8a;
+  }
+  
+  .nav__menu {
+  
+    line-height: 50px;
+    font-weight: 1000;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+  
+  .nav__menu-item {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .nav__menu-item:hover {
+    background-color: #EFF7E1;
+  }
+  
+  .nav__menu-item:hover .nav__submenu {
+    display: block;
+  }
+  
+  .nav__submenu {
+    font-weight: 300;
+    text-transform: none;
+    display: none;
+    position: absolute;
+    width: 200px;
+    background-color: #F8DC81;
+  }
+  
+  .nav__submenu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+    display: block
+  }
+  
+  /* TOGGLE */
+  .nav-toggle {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 60px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  @media (max-width: 880px) {
+  
+    body {
+      padding-top: 70px;
+    }
+  
+  
+  
+  }
+  
+  /*Navegador Fin//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+  form {
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 10vmin;
+  }
+  .col-md-6{
+    width: 100%;
+    margin-top: 10%;
+    margin-left: 10%;
+  }
+  #desc{
+    width: 50%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
