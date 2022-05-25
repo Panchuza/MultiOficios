@@ -1,10 +1,12 @@
 package ar.com.MultiOficios.servicios;
 
 import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.entidades.Zona;
 import ar.com.MultiOficios.enums.RolUsuario;
 import static ar.com.MultiOficios.enums.RolUsuario.USUARIO;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
+import ar.com.MultiOficios.repositorios.ZonaRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +32,10 @@ public class UsuarioServicio implements UserDetailsService{
     
     @Autowired
     public UsuarioRepositorio usuarioRepositorio;
+    public UsuarioServicio usuarioServicio;
+    public ZonaRepositorio zonaRepositorio;
+    @Autowired
+    public ZonaServicio zonaServicio;
     
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
@@ -47,8 +53,9 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setRolUsuario(USUARIO);
         usuario.setFechaAltaUsuario(new Date());
         usuario.setFechaBajaUsuario(null);
+        usuario.setZona(null);
 
-        usuarioRepositorio.save(usuario);
+        usuarioRepositorio.save(usuario);   
     }
     
     public void darDeBajaUsuario(String id) throws ErrorServicio{    
@@ -61,7 +68,7 @@ public class UsuarioServicio implements UserDetailsService{
         }
     }
     
-    public void modificarUsuario(String id, String nombre, String apellido, RolUsuario rolUsuario, Date fechaModificacionUsuario) throws ErrorServicio, Exception {
+    public void modificarUsuario(String id, String nombre, String apellido, RolUsuario rolUsuario, Date fechaModificacionUsuario, Zona zona) throws ErrorServicio, Exception {
 
         validarDatos2(nombre, apellido);
         Usuario usuario = buscarPorId(id);
@@ -70,6 +77,7 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setApellido(apellido);
         usuario.setRolUsuario(rolUsuario);
         usuario.setFechaModificacionUsuario(new Date());
+        usuario.setZona(zona);
 
         usuarioRepositorio.save(usuario);
     }

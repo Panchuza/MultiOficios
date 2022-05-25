@@ -1,8 +1,10 @@
 package ar.com.MultiOficios.controladores;
 
 import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.entidades.Zona;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.errores.ErrorServicio;
+import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
 import ar.com.MultiOficios.servicios.UsuarioServicio;
 import ar.com.MultiOficios.servicios.ZonaServicio;
 import java.util.Date;
@@ -25,6 +27,9 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    
+    @Autowired
+    private ZonaServicio ZonaServicio;
 
     
     @GetMapping("form")
@@ -88,9 +93,21 @@ public class UsuarioControlador {
     @PostMapping("/editarUsuario")
     public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre,
             @RequestParam(required = false) String apellido,@RequestParam(required = false) RolUsuario rolUsuario,Date fechaModificacionUsuario, 
-            ModelMap model, RedirectAttributes attr) throws Exception {
+            ModelMap model, @RequestParam(required = false) int codigoPostal, @RequestParam(required = false) String ciudad,
+            @RequestParam(required = false) String calle, @RequestParam(required = false) int numero,
+            @RequestParam(required = false) String provincia,RedirectAttributes attr) throws Exception {
+        Zona zona = new Zona();
+        
         try {
-            usuarioServicio.modificarUsuario(id, nombre, apellido, rolUsuario, fechaModificacionUsuario);
+            
+            System.out.println(nombre + "************************************");
+            zona=ZonaServicio.crearZona(1258, "djdjdjdj", "dkdkdkdkd", 458, "dodododo");
+        
+            
+            
+            
+            usuarioServicio.modificarUsuario(id, nombre, apellido, rolUsuario, fechaModificacionUsuario,zona);
+                       
             attr.addFlashAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);

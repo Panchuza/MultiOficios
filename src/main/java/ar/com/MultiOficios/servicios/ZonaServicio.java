@@ -14,10 +14,11 @@ public class ZonaServicio {
     @Autowired
     public ZonaRepositorio zonaRepositorio;
 
-    public void crearZona(int codigoPostal, String ciudad,
+    public Zona crearZona(int codigoPostal, String ciudad,
             String calle, int numero, String provincia) throws Exception {
 
         validarDatos(codigoPostal, ciudad, calle, numero, provincia);
+        
         Zona zona = new Zona();
         zona.setCodigoPostal(codigoPostal);
         zona.setCiudad(ciudad);
@@ -26,6 +27,8 @@ public class ZonaServicio {
         zona.setProvincia(provincia);
 
         zonaRepositorio.save(zona);
+        
+        return zona;
     }
 
 ////-----------------------------------------LISTAR PROVINCIAS--------------------------------------------------
@@ -36,9 +39,9 @@ public class ZonaServicio {
     public void validarDatos(int codigoPostal, String ciudad,
             String calle, int numero, String provincia) throws Exception {
 
-        if (codigoPostal == 0 || codigoPostal > 9999) {
-            throw new Exception("Error: El codigo postal del Usuario no puede ser nulo");
-        }
+        //if (codigoPostal == 0 || codigoPostal > 9999) {
+        //    throw new Exception("Error: El codigo postal del Usuario no puede ser nulo");
+       // }
         if (ciudad == null || ciudad.isEmpty()) {
             throw new Exception("Error: La ciudad del Usuario no puede ser nula");
         }
