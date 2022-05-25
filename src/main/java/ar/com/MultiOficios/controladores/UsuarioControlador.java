@@ -1,8 +1,10 @@
 package ar.com.MultiOficios.controladores;
 
 import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.entidades.Zona;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.errores.ErrorServicio;
+import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
 import ar.com.MultiOficios.servicios.UsuarioServicio;
 import ar.com.MultiOficios.servicios.ZonaServicio;
 import java.util.Date;
@@ -10,7 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +27,10 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-
+    
     @Autowired
-    private ZonaServicio zonaServicio;
+    private ZonaServicio ZonaServicio;
+
     
     @GetMapping("form")
     public String form() {
@@ -40,20 +42,20 @@ public class UsuarioControlador {
     public String crearUsuario(@RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String confirmarPassword, 
-            @RequestParam RolUsuario rolUsuario, RedirectAttributes attr) {
+            @RequestParam(required = false) RolUsuario rolUsuario, RedirectAttributes attr) {
 
         try {
             
             usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
-            attr.addFlashAttribute("exito", "se registro el usuario'" + nombre + "' correctamente");
+            attr.addFlashAttribute("exito", "Se registro el usuario '" + nombre + "' correctamente");
         } catch (Exception e) {
             attr.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/usuario/form";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/listarUsuarios")
     public String listarUsuarios(String id, ModelMap model, @RequestParam(required = false) String query) throws ErrorServicio {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
@@ -61,7 +63,7 @@ public class UsuarioControlador {
         return "listarUsuarios.html";
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN'")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/bajaUsuario/{id}")
     public String bajaUsuario(@PathVariable("id") String id, RedirectAttributes attr) {
         try {
@@ -87,13 +89,25 @@ public class UsuarioControlador {
         }
         return "modificar-usuario.html";
     }
-
+    
     @PostMapping("/editarUsuario")
     public String editarUsuario(@RequestParam String id, @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) String apellido, @RequestParam(required = false) String email,
-            Date fechaModificacionUsuario, ModelMap model, RedirectAttributes attr) throws Exception {
+            @RequestParam(required = false) String apellido,@RequestParam(required = false) RolUsuario rolUsuario,Date fechaModificacionUsuario, 
+            ModelMap model, @RequestParam(required = false) int codigoPostal, @RequestParam(required = false) String ciudad,
+            @RequestParam(required = false) String calle, @RequestParam(required = false) int numero,
+            @RequestParam(required = false) String provincia,RedirectAttributes attr) throws Exception {
+        Zona zona = new Zona();
+        
         try {
-            usuarioServicio.modificarUsuario(id, nombre, apellido, email, fechaModificacionUsuario);
+            
+            System.out.println(nombre + "************************************");
+            zona=ZonaServicio.crearZona(1258, "djdjdjdj", "dkdkdkdkd", 458, "dodododo");
+        
+            
+            
+            
+            usuarioServicio.modificarUsuario(id, nombre, apellido, rolUsuario, fechaModificacionUsuario,zona);
+                       
             attr.addFlashAttribute("exito", "Usuario editado correctamente");
         } catch (ErrorServicio ex) {
             Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);

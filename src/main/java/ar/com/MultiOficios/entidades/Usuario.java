@@ -24,7 +24,7 @@ public class Usuario {
     private String apellido;
     private String email;
     private String password;
-    
+   
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAltaUsuario;
     
@@ -40,8 +40,10 @@ public class Usuario {
     
     @OneToMany
     private List<Publicacion> publicacion;
+    
     @ManyToOne
     private Zona zona;
+   
     
     @Enumerated(EnumType.STRING)
     private ValoracionProveedores valoracionPoveedores; 
@@ -50,6 +52,8 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    
 
     public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, List<Publicacion> publicacion, Zona zona, ValoracionProveedores valoracionPoveedores) {
         this.id = id;
@@ -234,6 +238,12 @@ public class Usuario {
     public void setValoracionPoveedores(ValoracionProveedores valoracionPoveedores) {
         this.valoracionPoveedores = valoracionPoveedores;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password=" + password + ", fechaAltaUsuario=" + fechaAltaUsuario + ", fechaBajaUsuario=" + fechaBajaUsuario + ", fechaModificacionUsuario=" + fechaModificacionUsuario + ", rolUsuario=" + rolUsuario + ", publicacion=" + publicacion + ", zona=" + zona + ", valoracionPoveedores=" + valoracionPoveedores + '}';
+    }
+
+
     
-    
-}
+    }

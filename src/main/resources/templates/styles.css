@@ -1,104 +1,74 @@
-nav{
-    background-color: transparent;
-    margin-top: 0px;
-}
-.navbar-brand{
-    margin-left: 400px;
-    background-color: transparent;
-}
-#nav{
-    color: #F8DC81;
-    float: center;
-    font-family: fantasy;
-    background-color: transparent;
-}
-#nav:hover{
-    color: #A2D0C1;
-}
-#boton{
-    float: right;
-    
-    margin-top: 0px;
-    background-color: #F8DC81;
-    color: black;
-    text-shadow: whitesmoke;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-#boton:hover{
-    background-color: #A2D0C1;
-    color: white;
-    text-shadow: 2px 2px 2px rgb(31, 30, 30);
-}
- 
-.banner {
-    width: 100%;
-    height: 600px;
-    animation: header-top 10s infinite linear alternate;
-    background-size: 100% 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-@keyframes  banner {
-    0%, 20%{
-        background-image: url(../prueba/img/cerrajero.png);
-    }
-    25%, 45%{
-        background-image: url(../prueba/img/flete.png);
-    }
-    50%, 70%{
-        background-image: url(../prueba/img/diseñodeinteriores.png);
-    }
-    75%, 100%{
-        background-image: url(../prueba/img/carpintero.png);
-    }
-}
-.capa{
-    width: 100%;
-    height: 100%;
-    position: absolute ;
-    top: 0;
-    left: 0;
-}
-.info{
-    z-index: 1;
-    width: 100%;
-    max-width: 550px;
-    text-align: center;
-    margin-left: 200px;
-    margin-top: 100px;
-}
-.info h1{
-    color: #F8DC81;
-    font-size: 45px;
+* {
+    padding: 0;
+    margin: 0;
+  }
+  p {
     margin-bottom: 20px;
-    letter-spacing: 1px;
-    position: relative;
-    top: 90px; left: 500px;
-    text-shadow:2px 2px 2px black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-}
-.info p{
-    color: rgba(244, 243, 247, 0.808);
-    line-height: 1.7;
-    margin-bottom: 30px;
-    position: relative;
-    top: 90px; left: 500px;
-    text-shadow: 2px 2px 2px black;
-    font-size: large;
-}
+  }
+  .wrapper {
+      background-color: transparent !important;
+    width: 80%;
+    margin: auto;
    
-.slider_section{
-    background-size: cover;
+  }
+  header {
+    background: #A2D0C1;
     width: 100%;
-    height: 800px;
-    justify-content: center;
-    align-items: center;
-    background-position: 100%;
-    background-image: url(Rubros/gifultimocreo.gif);
-    background-repeat: no-repeat;
-    
-} 
+    position: center;
+    z-index: 0;
+  }
+  
+  nav {
+    float: left; /* Desplazamos el nav hacia la izquierda */
+  }
+  nav ul {
+    list-style: none;
+    overflow: hidden; /* Limpiamos errores de float */
+  }
+  nav ul li {
+    float: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+     margin-top: 3%;
+     
+       
+
+     font-weight: 400; 
+     
+     background-color:#A2D0C1 ;
+     opacity: 0.7; 
+     }
+
+
+
+  #navbarDropdown{
+    float: left;
+    font-weight: 100; 
+    padding-top: 0px;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    padding-bottom: 0%;
+
+ }
+  nav ul li a {
+   
+    padding: 100px;
+    color: black;
+    text-decoration: none;
+   
+  }
+  nav ul li:hover {
+    background: #A2D0C1;
+  }
+  .contenido {
+    padding-top: 100px;
+  }
+  
+
+  body{
+      background-image: url("imagenesmejoradas/img/gifoficios.gif");
+      background-repeat: no-repeat;
+      background-size:cover;
+  }
 

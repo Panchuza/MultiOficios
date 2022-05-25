@@ -9,15 +9,16 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="./stylelog.css">
     </head>
 
     <body>
         <div class="container-fluid vh-100">
-            <div class="" style="margin-top:50px">
+            <div class="vb" style="margin-top:50px">
                 <div class="rounded d-flex justify-content-center">
                     <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
                         <div class="text-center">
-                            <h3 class="text-primary">Sign In</h3>
+                            <h3 class="text-primary">Iniciar Sesión</h3>
                         </div>
                         <form th:action="@{/logincheck}" method="POST">
                             <h1 th:if="${exito != null}" th:text="${exito}" class="text-success"></h1>
@@ -31,7 +32,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-primary"><i
                                             class="bi bi-key-fill text-white"></i></span>
-                                    <input name="password" th:text="${password}" type="password" class="form-control" placeholder="Password">
+                                    <input name="password" th:text="${password}" type="password" class="form-control" placeholder="Contraseña">
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -39,8 +40,10 @@
                                         Recordarme
                                     </label>
                                 </div>
-                                <button th:href="@{/usuario/listarUsuarios/}" class="btn btn-primary text-center mt-2" type="submit">
-                                    Login
+                                <button th:href="@{/}" class="btn btn-primary text-center mt-2" type="submit">
+                                    Entrar
+                                </button>
+                                <a th:href="@{/}" class="btn btn-primary text-center mt-2" role="button">Volver</a>   
                                 </button>
                                 <p class="text-center mt-5">No esta registrado/a?
                                     <span class="text-primary"><a href="usuario/form">Registrarse</a></span>

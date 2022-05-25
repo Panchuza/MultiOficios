@@ -108,6 +108,11 @@ public class Zona {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
+    @Override
+    public String toString() {
+        return "Zona{" + "id=" + id + ", codigoPostal=" + codigoPostal + ", numero=" + numero + ", calle=" + calle + ", ciudad=" + ciudad + ", provincia=" + provincia + '}';
+    }
     
     
 }
