@@ -142,3 +142,22 @@ h1 {
 }
 
 /*Navegador Fin//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.container{
+  margin-top: 10%;
+  background-color: #EFF7E1;
+}
+
+
+.col-md-6{
+  width: 100%;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.col-12{
+  margin-left: 10%;
+}
+.btn-success{
+  margin-top:5%;
+}

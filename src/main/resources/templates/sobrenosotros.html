@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MultiOficios</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style1.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+  <!--Navegador-------------------------------------------------------------------------------------------------------------------->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300" rel="stylesheet" type="text/css" />
+  <nav class="nav">
+    <nav class="navbar-brand">
+      <a class="navbar-brand" href="#">
+        <img src="nuevo/img/M.png" alt="">
+      </a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav__menu ml-auto">
+      <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/usuario/form}">Registrarse</a>
+      </li>
+      <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/login}">Ingresar</a></li>
+      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil}">Perfil</a></li>
+      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/logout}">Salir</a></li>
+      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a
+          th:href="@{/listarPublicaciones}">Servicios</a></li>
+      <li class="nav__menu-item"><a>Sobre Nosotros</a>
+      </li>
+
+      <li class="nav__menu-item"><a>Contactenos!</a></li>
+    </ul>
+  </nav>
+  <!--Fin Navegador----------------------------------------------------------------------------------------------------------->
+
+
+
+
+  <!--Fondo y caja de Bienvenida---------------------------------------------------------------------------------------------->
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+    <div class="imagensobrenosotros">
+        <img src="nuevo/img/M (A4 Document) (1).png" alt="">
+    </div>
+  <div class="content4">
+    <h2> Sobre Multioficios!</h2>
+    <h2>Nuestro origen surge a partir de una necesidad detectada durante la pandemia del Covid-19, los primeros usuarios de "MulltiOficios" necesitaban estar conectados de manera local, una plataforma que los conecte con el prestador del servicio más cercano posible a sus hogares. Esa fue el inicio de nuestro servicio, donde creamos un espacio seguro para que ellos pueden conectarse y solicitar ese "MultiOficio".
+        Así nació este equipo de profesionales unidos por un mismo objetivo, queremos brindar a los usuarios un servicio y una experiencia de calidad, para conectarlos entre sí de manera fácil, rápida y efectiva.
+        
+        ¡Los oficios cumplen un rol fundamental en la economía! 
+        
+        Por eso queremos verlos crecer y crecer junto ustedes.
+        </h2>
+
+  </div>
+
+  <!--Fin Fondo y caja de Bienvenida------------------------------------------------------------------------------------------>
+
+
+
+
+
+  <!--redes sociales--------------------------------------------------------------------------------------------------------------------------->
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <nav class="social">
+
+    <ul>
+      <li><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
+      <li><a href="#">Github <i class="fa fa-github"></i></a></li>
+      <li><a href="#">Linkedin <i class="fa fa-linkedin"></i></a></li>
+    </ul>
+  </nav>
+  <!--fin redes sociales---------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+  <!--footer---------------------------------------------------------------------------------------------------------------------------------->
+  <footer class="footer-distributed">
+
+    <div class="footer-left">
+
+      <h3>MULTI<span>Oficios</span></h3>
+
+      <p class="footer-links">
+        <a href="#" class="link-1">Home</a>
+
+        <a href="#">Blog</a>
+
+
+        <a href="#">About</a>
+
+        <a href="#">Faq</a>
+
+        <a href="#">Contact</a>
+      </p>
+
+      <p class="footer-company-name">Equipo 4 - Comisión "A" © 2021/2022</p>
+    </div>
+
+    <div class="footer-center">
+
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>742 Avenida Siempreviva.</span> Springfield</p>
+      </div>
+
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>+1.444.444.444</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="multioficiossupport@gmail.com">support@company.com</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      <p class="footer-company-about">
+        <span>About the company</span>
+        Red profesional.
+        Web que conecta a empleadosy empleadores.
+      </p>
+
+      <div class="footer-icons">
+
+
+
+      </div>
+
+    </div>
+
+  </footer>
+  <!--fin footer---------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+</body>
+
+</html>
