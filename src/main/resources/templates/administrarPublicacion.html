@@ -53,7 +53,9 @@
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
 
-    <form class="row g-3" th:action="@{/administrarPublicacion}" method="POST">
+
+    <div class="contenedorform"> 
+        <form class="row g-3" th:action="@{/administrarPublicacion}" method="POST">
         <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="inputEmail4" name="nombre" th:text="${nombre}">
@@ -67,11 +69,15 @@
             <!--<h4 th:if="${exito!=null}" th:text="${exito}"  style="color:green"> </h4>-->
         </div>
 
-        <div class="col-12" id="boton">
-            <button class="btn btn-success">Guardar</button>
+        <div class="boton">
+            <button class="btn btn-success" id="boton2" >Guardar</button>
         </div>
-    </form>
+        </form>
+       </div>
+
     </div>
+
+   
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
