@@ -143,18 +143,29 @@ body {
   
   /*Navegador Fin//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-  form {
-    margin-left: 300px;
-    margin-right: 300px;
-    padding: 10vmin;
-  }
   .col-md-6{
     width: 100%;
     margin-top: 10%;
     margin-left: 10%;
   }
   #desc{
-    width: 50%;
+    width: 90%;
     margin-left: 10%;
     margin-right: 10%;
+  }
+  .contenedorform{
+    margin-top: 10%;
+    float: left;
+    margin-left:20% ;
+  }
+  .boton{
+    margin-left: 10%
+    
+  }
+  .btn{
+    background-color: #F8DC81;
+  }
+  #boton2{
+    color: #214151;
+    background-color: #F8DC81;
   }
