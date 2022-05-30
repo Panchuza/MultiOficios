@@ -890,3 +890,32 @@ form {
 #btvolv{
   background-color: #214151;
 }
+
+
+/* contenido sobre nosotros///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.content4 {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  
+  padding:10vmin;
+  position:auto;
+  text-align:center;
+  top:80%;
+  transform:translate(-50%, -50%);
+  width: 90%;
+  
+
+  }
+
+.content4{
+  margin-left: 50%;
+  margin-top: 50%;
+ 
+ 
+}
+
+
+/* fin contenido sobre nosotros///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
