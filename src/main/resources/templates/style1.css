@@ -839,24 +839,16 @@ footer{
   text-align:center;
   top:80%;
   transform:translate(-50%, -50%);
-  width: 40%;
+  width: 90%;
   
 
   }
 
 .content4{
-  float: left;
-  margin-top: 10%;
+  margin-left: 50%;
+  margin-top: 50%;
  
- margin-left:25% ;
-}
-
-.imagensobrenosotros{
- padding-right: 2%;
-  margin-top: 10%;
-  float: right;
-  width: 50%;
-  height: 50%;
+ 
 }
 
 
