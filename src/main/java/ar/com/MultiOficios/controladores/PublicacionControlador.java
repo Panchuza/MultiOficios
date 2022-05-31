@@ -35,7 +35,7 @@ public class PublicacionControlador {
     }
 
     @PostMapping("/administrarPublicacion")
-    public String crearPublicacion(RedirectAttributes attr, @RequestParam(required = false) String nombre, @RequestParam(required = false) String descripcion) throws ErrorServicio {
+    public String crearPublicacion(RedirectAttributes attr, @RequestParam String nombre, @RequestParam String descripcion) throws ErrorServicio {
 
         try {
 
