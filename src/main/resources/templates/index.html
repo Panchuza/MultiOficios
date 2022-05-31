@@ -34,10 +34,12 @@
       <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/usuario/form}">Registrarse</a>
       </li>
       <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/login}">Ingresar</a></li>
-      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil}">Perfil</a></li>
+      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil(id=__${session.usuariosession.id}__)}">Perfil</a></li>
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/logout}">Salir</a></li>
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a
-          th:href="@{/listarPublicaciones}">Servicios</a></li>
+          th:href="@{/listarPublicaciones}">Servicios Publicaciones</a></li>
+           <li class="nav__menu-item" sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+          th:href="@{/usuario/listarUsuarios}">Servicios Usuarios</a></li>
       <li class="nav__menu-item"><a>Sobre Nosotros</a>
       </li>
       <li class="nav__menu-item" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><a>Contactenos!</a>
