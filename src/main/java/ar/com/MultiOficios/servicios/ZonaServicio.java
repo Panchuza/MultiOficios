@@ -1,9 +1,11 @@
 package ar.com.MultiOficios.servicios;
 
 import ar.com.MultiOficios.entidades.Zona;
+import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.ZonaRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,22 +16,30 @@ public class ZonaServicio {
     @Autowired
     public ZonaRepositorio zonaRepositorio;
 
-    public void crearZona(int codigoPostal, String ciudad,
-            String calle, int numero, String provincia) throws Exception {
+    public Zona crearZona(String codigoPostal, String ciudad,
+            String calle, String numero, String provincia) throws Exception {
 
-        validarDatos(codigoPostal, ciudad, calle, numero, provincia);
+//        validarDatos(codigoPostal, ciudad, calle, numero, provincia);
         Zona zona = new Zona();
-        zona.setCodigoPostal(codigoPostal);
-        zona.setCiudad(ciudad);
-        zona.setCalle(calle);
-        zona.setNumero(numero);
-        zona.setProvincia(provincia);
+        zona.setCodigoPostal("");
+        zona.setCiudad("");
+        zona.setCalle("");
+        zona.setNumero("");
+        zona.setProvincia("");
 
-        zonaRepositorio.save(zona);
+        return zonaRepositorio.save(zona);
     }
 
 ////-----------------------------------------LISTAR PROVINCIAS--------------------------------------------------
-
+    @Transactional(readOnly = true)
+    public Zona buscarPorId(String id) throws ErrorServicio{
+        Optional<Zona> respuesta = zonaRepositorio.findById(id);
+        if(respuesta.isPresent()){
+            return respuesta.get();
+        } else {
+            throw new ErrorServicio("No se encontro el usuario");
+        }
+    }
 //-----------------------------------------LISTAR PROVINCIAS--------------------------------------------------
 //-----------------------------------------VALIDAR LOS DATOS--------------------------------------------------
 

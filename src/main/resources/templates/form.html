@@ -50,8 +50,8 @@
     <div class="bg bg3"></div>
 
     <form th:action="@{/usuario/form}" method="POST">
-        <h1 th:if="${exito != null}" th:text="${exito}" class="text-success"></h1>
-        <h1 th:if="${error!= null}" th:text="${error}" class="text-danger"></h1>
+        <h3 th:if="${exito != null}" th:text="${exito}" class="text-success"></h3>
+        <h3 th:if="${error!= null}" th:text="${error}" class="text-danger"></h3>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Nombre</label>
             <input th:text="${nombre}" type="text" name="nombre" class="form-control" id="formGroupExampleInput"
@@ -77,9 +77,9 @@
             <input th:text="${confirmarPassword}" type="password" name="confirmarPassword" class="form-control"
                 id="formGroupExampleInput5" placeholder="Confirmar contraseña...">
         </div>
+        
 
-
-        <button id="colorbotonform" class="btn btn-success">Crear</button>
+    <button id="colorbotonform" class="btn btn-success">Crear</button>
         <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
     </form>
 

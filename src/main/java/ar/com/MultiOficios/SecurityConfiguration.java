@@ -1,6 +1,5 @@
 package ar.com.MultiOficios;
 
-
 import ar.com.MultiOficios.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
