@@ -58,7 +58,7 @@
     <div class="container">
         <br>
 
-        <td><a th:href="@{/administrarPublicacion}"> <button class="btn btn-success" id="botonprincipal">Crear Publicacion</button></a></td>
+        <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/administrarPublicacion}"> <button class="btn btn-success" id="botonprincipal">Crear Publicacion</button></a></td>
 
         <table class="table table-sm text">
             <h2 style="text-align: center; color: black;">Listar Publicaciones</h2>
@@ -68,10 +68,10 @@
                     <th scope="col">Descripcion</th>
                     <th scope="col">Fecha de Alta</th>
                     <th scope="col">Fecha de Baja</th>
-                    <th scope="col">Fecha de Modifcacion</th>
-                    <th scope="col">Editar Publicacion</th>
-                    <th scope="col">Dar Baja Publicacion</th>
-                    <th scope="col">Eliminar Publicacion</th>
+                    <th scope="col">Fecha de Modificacion</th>
+                    <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Editar Publicacion</th>
+                    <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Dar Baja Publicacion</th>
+                    <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Eliminar Publicacion</th>
 
                 </tr>
             </thead>
@@ -83,12 +83,14 @@
                     <td th:text="${publicacion.fechaAltaPublicacion}">
                     <td th:text="${publicacion.fechaBajaPublicacion}">
                     <td th:text="${publicacion.fechaModificacionPublicacion}">
-                    <td><a th:href="@{/modificarPublicacion/} + ${publicacion.id}"> <button
+                    <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/modificarPublicacion/} + ${publicacion.id}"> <button
                                 class="btn btn-success" id="boton1">Editar</button></a></td>
-                    <td><a th:href="@{/DarDeBajaPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger" id="boton2">Dar
+                    <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/DarDeBajaPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger" id="boton2">Dar
                                 baja</button></a></td>
-                    <td><a th:href="@{/eliminarPublicacion/} + ${publicacion.id}"> <button
+                    <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/eliminarPublicacion/} + ${publicacion.id}"> <button
                                 class="btn btn-danger" id="boton3">Eliminar</button></a></td>
+                    <td><a sec:authorize="hasAnyRole('ROLE_CLIENTE')" th:href="@{/listarPublicaciones}"> <button
+                                class="btn btn-danger" id="boton3">Contratar</button></a></td>
                 </tr>
 
             </tbody>
