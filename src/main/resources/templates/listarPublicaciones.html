@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Publicaciones</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listar Publicaciones</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/01ced271c2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./stylepubl.css">
+        <link rel="stylesheet" href="./stylepubl.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
     <!--Navegador-------------------------------------------------------------------------------------------------------------------->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,300" rel="stylesheet" type="text/css" />
@@ -30,11 +30,11 @@
         </nav>
         <button class="nav-toggle" aria-label="Abrir menú">
             <i class="fas fa-bars"></i>
-        </button>
+                </button>
         <ul class="nav__menu ml-auto">
             <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a
                     th:href="@{/usuario/form}">Registrarse</a>
-            </li>
+                        </li>
             <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/login}">Ingresar</a>
             </li>
             <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil}">Perfil</a>
@@ -46,19 +46,32 @@
             </li>
 
             <li class="nav__menu-item"><a>Contactenos!</a></li>
+                    </ul>
         </ul>
-        </ul>
-    </nav>
+        </nav>
     <!--Fin Navegador----------------------------------------------------------------------------------------------------------->
 
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
+        
+        <div class="container">
+            <br>
 
-    <div class="container">
-        <br>
-
-        <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/administrarPublicacion}"> <button class="btn btn-success" id="botonprincipal">Crear Publicacion</button></a></td>
+<td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/administrarPublicacion}"> <button class="btn btn-success" id="botonprincipal">Crear Publicacion</button></a></td>
+<!-- Mensajes -->
+        <div class="alert alert-success alert-dismissible" th:if="${exito!=null}">
+            <label th:text="${exito}"></label>
+            <button type="button" class="btn-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="alert alert-danger alert-dismissible" th:if="${error!=null}">
+            <label th:text="${error}"></label>
+            <button type="button" class="btn-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="alert alert-warning alert-dismissible" th:if="${warning!=null}">
+            <label th:text="${warning}"></label>
+            <button type="button" class="btn-close" aria-label="Close">&times;</button>
+        </div>
 
         <table class="table table-sm text">
             <h2 style="text-align: center; color: black;">Listar Publicaciones</h2>
@@ -73,10 +86,11 @@
                     <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Dar Baja Publicacion</th>
                     <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Eliminar Publicacion</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="publicacion:${publicaciones}">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="publicacion:${publicaciones}">
+
 
                     <td th:text="${publicacion.nombre}">
                     <td th:text="${publicacion.descripcion}">
@@ -84,6 +98,7 @@
                     <td th:text="${publicacion.fechaBajaPublicacion}">
                     <td th:text="${publicacion.fechaModificacionPublicacion}">
                     <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/modificarPublicacion/} + ${publicacion.id}"> <button
+
                                 class="btn btn-success" id="boton1">Editar</button></a></td>
                     <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" th:href="@{/DarDeBajaPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger" id="boton2">Dar
                                 baja</button></a></td>
@@ -93,17 +108,17 @@
                                 class="btn btn-danger" id="boton3">Contratar</button></a></td>
                 </tr>
 
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html> 

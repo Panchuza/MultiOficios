@@ -6,6 +6,7 @@ import ar.com.MultiOficios.repositorios.PublicacionRepositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +38,9 @@ public class PublicacionServicio {
     public void modificar(String id, String nombre, String descripcion) throws ErrorServicio {
 
         Optional<Publicacion> respuesta = publicacionRepositorio.findById(id);
+        
 
-        if (respuesta.isPresent()) {
+        if (respuesta.isPresent() && respuesta.get().getFechaBajaPublicacion()==null) {
 
             Publicacion publicacion = respuesta.get();
             publicacion.setNombre(nombre);
@@ -47,7 +49,7 @@ public class PublicacionServicio {
 
             publicacionRepositorio.save(publicacion);
         } else {
-            throw new ErrorServicio("La publicacion no existe");
+            throw new ErrorServicio("La publicacion esta dada de baja");            
         }
 
     }
