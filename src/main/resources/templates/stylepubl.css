@@ -146,7 +146,7 @@ h1 {
 
 .container{
   margin-top: 10%;
-  background-color: #EFF7E1;
+  background-color: #a8c3c4;
 }
 
 
@@ -160,4 +160,41 @@ h1 {
 }
 .btn-success{
   margin-top:5%;
+}
+
+.btn-success{
+  margin-top: 0px;
+
+}
+#boton1{
+  background-color: #dfc572;
+  color: black;
+}
+#botonprincipal{
+  background-color: #dfc572;
+  color: black;
+}
+#boton2{
+  background-color: #214151;
+}
+#boton3{
+  background-color: #214151;
+}
+
+/* form///////////////////////////////////////////////////////////////////////////////////////////////////////*/
+table {
+  
+  margin-right: 300px;
+}
+
+.btn-warning {
+  background-color: #F8DC81;
+  color: #000;
+}
+.m-1{
+  background-color: #3a6f8a;
+  margin-left: 200px;
+}
+.btn-secondary{
+  background-color: #214151;
 }

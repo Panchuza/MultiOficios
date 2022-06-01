@@ -180,3 +180,21 @@ h1 {
 #boton3{
   background-color: #214151;
 }
+
+/* form///////////////////////////////////////////////////////////////////////////////////////////////////////*/
+table {
+  
+  margin-right: 300px;
+}
+
+.btn-warning {
+  background-color: #F8DC81;
+  color: #000;
+}
+.m-1{
+  background-color: #3a6f8a;
+  margin-left: 200px;
+}
+.btn-secondary{
+  background-color: #214151;
+}
