@@ -40,7 +40,8 @@ public class Usuario {
     
     @OneToMany
     private List<Publicacion> publicacion;
-    @ManyToOne
+    
+    @ManyToOne 
     private Zona zona;
     
     @Enumerated(EnumType.STRING)

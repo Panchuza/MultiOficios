@@ -1,10 +1,12 @@
 package ar.com.MultiOficios.servicios;
 
 import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.entidades.Zona;
 import ar.com.MultiOficios.enums.RolUsuario;
 import static ar.com.MultiOficios.enums.RolUsuario.USUARIO;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.UsuarioRepositorio;
+import ar.com.MultiOficios.repositorios.ZonaRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,16 +32,21 @@ public class UsuarioServicio implements UserDetailsService{
     
     @Autowired
     public UsuarioRepositorio usuarioRepositorio;
+    @Autowired
+    public ZonaRepositorio zonaRepositorio;
+    @Autowired
+    public ZonaServicio zonaServicio;
     
 //---------------------------------------------USUARIO--------------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
     public void crearUsuario(String nombre, String apellido, String email, 
             String password, String confirmarPassword, RolUsuario rolUsuario) throws Exception {
         
+        
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
-
         Usuario usuario = new Usuario();
+        usuario.setZona(zonaServicio.crearZona("", "", "", "", ""));
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
@@ -73,12 +80,19 @@ public class UsuarioServicio implements UserDetailsService{
 
         usuarioRepositorio.save(usuario);
     }
-    public Usuario modificarUsuarioPerfil(String id, String nombre, String apellido) throws ErrorServicio, Exception {
+    public Usuario modificarUsuarioPerfil(String id, String nombre, String apellido, 
+            String ciudad, String calle, String codigoPostal, String numero, String provincia) throws ErrorServicio, Exception {
 
         validarDatos2(nombre, apellido);
         Usuario usuario = buscarPorId(id);
+        Zona zona = zonaRepositorio.getById(usuario.getZona().getId());
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
+        zona.setCiudad(ciudad);
+        zona.setCalle(calle);
+        zona.setCodigoPostal(codigoPostal);
+        zona.setNumero(numero);
+        zona.setProvincia(provincia);
         usuario.setFechaModificacionUsuario(new Date());
 
         return usuarioRepositorio.save(usuario);

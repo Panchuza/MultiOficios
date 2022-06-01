@@ -25,6 +25,8 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ZonaServicio zonaServicio;
 
     
     @GetMapping("form")
@@ -41,6 +43,7 @@ public class UsuarioControlador {
 
         try {
             
+            zonaServicio.crearZona("", "", "", "", "");
             usuarioServicio.crearUsuario(nombre, apellido, email, password, confirmarPassword, rolUsuario);
 
             attr.addFlashAttribute("exito", "Se registro el usuario '" + nombre + "' correctamente");

@@ -12,8 +12,8 @@ public class Zona {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid" , strategy = "uuid2")
     private String id;
-    private int codigoPostal;
-    private int numero;
+    private String codigoPostal;
+    private String numero;
     private String calle;
     private String ciudad;
     private String provincia;
@@ -21,7 +21,7 @@ public class Zona {
     public Zona() {
     }
 
-    public Zona(String id, int codigoPostal, int numero, String calle, String ciudad, String provincia) {
+    public Zona(String id, String codigoPostal, String numero, String calle, String ciudad, String provincia) {
         this.id = id;
         this.codigoPostal = codigoPostal;
         this.numero = numero;
@@ -48,28 +48,28 @@ public class Zona {
     /**
      * @return the codigoPostal
      */
-    public int getCodigoPostal() {
+    public String getCodigoPostal() {
         return codigoPostal;
     }
 
     /**
      * @param codigoPostal the codigoPostal to set
      */
-    public void setCodigoPostal(int codigoPostal) {
+    public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
     /**
      * @return the numero
      */
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
     /**
      * @param numero the numero to set
      */
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

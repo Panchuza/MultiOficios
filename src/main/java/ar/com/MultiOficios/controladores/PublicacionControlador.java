@@ -40,7 +40,7 @@ public class PublicacionControlador {
         try {
 
             publicacionServicio.crear(nombre, descripcion);
-            attr.addFlashAttribute("exito", "La publicacion" + nombre + " Se cargo exitosamente");
+            attr.addFlashAttribute("exito", "La publicacion se cargo exitosamente");
 
         } catch (ErrorServicio ex) {
 
@@ -66,6 +66,7 @@ public class PublicacionControlador {
     public String modificarPublicacion(RedirectAttributes attr, @RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam(required = false) String descripcion) throws ErrorServicio {
         try {
             publicacionServicio.modificar(id, nombre, descripcion);
+            attr.addFlashAttribute("exito", "La publicacion se modifico exitosamente");
         } catch (ErrorServicio ex) {
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }
@@ -88,6 +89,7 @@ public class PublicacionControlador {
     public String DarDeBajaPublicacion(RedirectAttributes attr, @RequestParam(required = false) String id) throws ErrorServicio {
         try {
             publicacionServicio.darDeBajaPublicacion(id);
+            attr.addFlashAttribute("warning", "ATENCION!: La publicacion se a dado de baja");
         } catch (ErrorServicio ex) {
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }
@@ -101,6 +103,7 @@ public class PublicacionControlador {
             Publicacion publicacion = publicacionServicio.buscarPorId(id);
             model.put("publicacion", publicacion);
             publicacionServicio.eliminarPublicacion(id);
+            attr.addFlashAttribute("warning", "ATENCION!: La publicacion se a eliminado");
         } catch (ErrorServicio ex) {
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }

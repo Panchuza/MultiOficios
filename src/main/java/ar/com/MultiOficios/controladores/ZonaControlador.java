@@ -36,8 +36,8 @@ public class ZonaControlador {
     }
 
     @PostMapping("/perfil")
-    public String crearZona(@RequestParam int codigoPostal, @RequestParam String ciudad,
-            @RequestParam String calle, @RequestParam int numero,
+    public String crearZona(@RequestParam String codigoPostal, @RequestParam String ciudad,
+            @RequestParam String calle, @RequestParam String numero,
             @RequestParam String provincia, RedirectAttributes attr) throws ErrorServicio {
 
         try {

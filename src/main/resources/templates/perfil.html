@@ -17,9 +17,7 @@
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
 
-
     <div th:action="@{/perfil}" method="POST" class="container rounded bg-white mt-5 mb-5">
-        <!--<input type="hidden" name="id" th:value="${usuario.id}"/>-->
         <h1 th:if="${exito != null}" th:text="${exito}" class="text-success"></h1>
         <h1 th:if="${error!= null}" th:text="${error}" class="text-danger"></h1>
         <div class="row">
@@ -49,56 +47,48 @@
                                     th:value="${session.usuariosession.apellido}">
                             </div>
                             <!--                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="emailUsuario">Email</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email" th:value="${usuario.email}">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="contraseñaUsuario">Contraseña</span>
-                                    <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="password" th:value="${usuario.password}">
+                                    <span class="input-group-text" id="codigoPostalUsuario">Codigo Postal</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="codigoPostal" th:value="${session.usuariosession.zona != null ? session.usuariosession.zona.codigoPostal : ''}">
                                 </div>-->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="codigoPostalUsuario">Codigo Postal</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" name="codigoPostal"
+                                    th:value="${session.usuariosession.zona.codigoPostal}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="provinciaUsuario">Provincia</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" name="provincia"
+                                    th:value="${session.usuariosession.zona.provincia}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="ciudadUsuario">Ciudad</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" name="ciudad"
+                                    th:value="${session.usuariosession.zona.ciudad}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="calleUsuario">Calle</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" name="calle"
+                                    th:value="${session.usuariosession.zona.calle}">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="numeroUsuario">Numero</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" name="numero"
+                                    th:value="${session.usuariosession.zona.numero}">
+                            </div>
                             <button id="btvolv" class="btn btn-primary m-1">Editar</button>
+                            <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
                         </form>
                     </div><br>
-
-                    <a id="btvolv" class="btn btn-primary m-1" th:href="@{/}" role="button">Volver</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 py-5">
-                    <h5>
-                        <div class="d-flex justify-content-between align-items-center experience"><span>Agregar/Editar
-                                Zona</span></div>
-                    </h5>
-
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Codigo Postal</label>
-                        <input th:text="${codigoPostal}" type="text" name="codigoPostal" class="form-control"
-                            id="formGroupExampleInput" placeholder="Codigo Postal...">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput5" class="form-label">Provincia</label>
-                        <input th:text="${provincia}" type="text" name="provincia" class="form-control"
-                            id="formGroupExampleInput5" placeholder="Provincia...">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput4" class="form-label">Ciudad</label>
-                        <input th:text="${ciudad}" type="text" name="ciudad" class="form-control"
-                            id="formGroupExampleInput4" placeholder="Ciudad...">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput3" class="form-label">Calle</label>
-                        <input th:text="${calle}" type="text" name="calle" class="form-control"
-                            id="formGroupExampleInput3" placeholder="Calle...">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Numero</label>
-                        <input th:text="${numero}" type="text" name="numero" class="form-control"
-                            id="formGroupExampleInput2" placeholder="Numero...">
-                    </div>
-
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     </div>
     </div>
