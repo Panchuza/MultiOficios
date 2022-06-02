@@ -1,6 +1,7 @@
 package ar.com.MultiOficios.servicios;
 
 import ar.com.MultiOficios.entidades.Publicacion;
+import ar.com.MultiOficios.enums.EstadoPublicacion;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.repositorios.PublicacionRepositorio;
 import java.util.Date;
@@ -29,18 +30,24 @@ public class PublicacionServicio {
         publicacion.setFechaAltaPublicacion(new Date());
         publicacion.setFechaBajaPublicacion(null);
         publicacion.setFechaModificacionPublicacion(null);
+        publicacion.setEstadoPublicacion(EstadoPublicacion.PUBLICADO);
 
         publicacionRepositorio.save(publicacion);
     }
 
+//    @Transactional(rollbackFor = {Exception.class})
+//    public void crearContratar(String id) throws ErrorServicio{
+//        Publicacion publicacion = buscarPorId(id);
+//        publicacion.setEstadoPublicacion(EstadoPublicacion.CONTRATADO);
+//        publicacionRepositorio.save(publicacion);
+//    }
 //---------------------------------------------MODIFICAR PUBLICACION--------------------------------------------------
     @Transactional(rollbackFor = {Exception.class})
     public void modificar(String id, String nombre, String descripcion) throws ErrorServicio {
 
         Optional<Publicacion> respuesta = publicacionRepositorio.findById(id);
-        
 
-        if (respuesta.isPresent() && respuesta.get().getFechaBajaPublicacion()==null) {
+        if (respuesta.isPresent() && respuesta.get().getFechaBajaPublicacion() == null) {
 
             Publicacion publicacion = respuesta.get();
             publicacion.setNombre(nombre);
@@ -49,7 +56,7 @@ public class PublicacionServicio {
 
             publicacionRepositorio.save(publicacion);
         } else {
-            throw new ErrorServicio("La publicacion esta dada de baja");            
+            throw new ErrorServicio("La publicacion esta dada de baja");
         }
 
     }
@@ -131,5 +138,24 @@ public class PublicacionServicio {
         if (descripcion.isEmpty() || descripcion == null) {
             throw new ErrorServicio("El nombre de la descripcion no puede estar vacio");
         }
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public void modificarEstado(String id) throws ErrorServicio {
+
+        Optional<Publicacion> respuesta = publicacionRepositorio.findById(id);
+
+        if (respuesta.isPresent() && respuesta.get().getFechaBajaPublicacion() == null) {
+            Publicacion publicacion = respuesta.get();
+            if (publicacion.getEstadoPublicacion().equals(EstadoPublicacion.PUBLICADO)) {
+                publicacion.setEstadoPublicacion(EstadoPublicacion.CONTRATADO);
+            } else {
+                publicacion.setEstadoPublicacion(EstadoPublicacion.PUBLICADO);
+            }
+            publicacionRepositorio.save(publicacion);
+        } else {
+            throw new ErrorServicio("La publicacion no esta");
+        }
+
     }
 }

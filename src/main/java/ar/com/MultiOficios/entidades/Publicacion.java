@@ -1,8 +1,11 @@
 
 package ar.com.MultiOficios.entidades;
 
+import ar.com.MultiOficios.enums.EstadoPublicacion;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
@@ -27,14 +30,19 @@ public class Publicacion {
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacionPublicacion;
+    
+    @Enumerated(EnumType.STRING)
+    private EstadoPublicacion estadoPublicacion;
+    
 
-    public Publicacion(String id, String nombre, String descripcion, Date fechaAltaPublicacion, Date fechaBajaPublicacion, Date fechaModificacionPublicacion) {
+    public Publicacion(String id, String nombre, String descripcion, Date fechaAltaPublicacion, Date fechaBajaPublicacion, Date fechaModificacionPublicacion, EstadoPublicacion estadoPublicacion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaAltaPublicacion = fechaAltaPublicacion;
         this.fechaBajaPublicacion = fechaBajaPublicacion;
         this.fechaModificacionPublicacion = fechaModificacionPublicacion;
+        this.estadoPublicacion = estadoPublicacion;
     }
 
     public Publicacion() {
@@ -88,10 +96,23 @@ public class Publicacion {
         this.fechaModificacionPublicacion = fechaModificacionPublicacion;
     }
 
-    @Override
-    public String toString() {
-        return "Publicacion{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaAltaPublicacion=" + fechaAltaPublicacion + ", fechaBajaPublicacion=" + fechaBajaPublicacion + ", fechaModificacionPublicacion=" + fechaModificacionPublicacion + '}';
+    /**
+     * @return the estadoPublicacion
+     */
+    public EstadoPublicacion getEstadoPublicacion() {
+        return estadoPublicacion;
+    }
+
+    /**
+     * @param estadoPublicacion the estadoPublicacion to set
+     */
+    public void setEstadoPublicacion(EstadoPublicacion estadoPublicacion) {
+        this.estadoPublicacion = estadoPublicacion;
     }
     
+    @Override
+    public String toString() {
+        return "Publicacion{" + "id=" + getId() + ", nombre=" + getNombre() + ", descripcion=" + getDescripcion() + ", fechaAltaPublicacion=" + getFechaAltaPublicacion() + ", fechaBajaPublicacion=" + getFechaBajaPublicacion() + ", fechaModificacionPublicacion=" + getFechaModificacionPublicacion() + '}';
+    }
     
 }

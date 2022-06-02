@@ -80,9 +80,10 @@
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
-                    <th scope="col">Fecha de Alta</th>
-                    <th scope="col">Fecha de Baja</th>
-                    <th scope="col">Fecha de Modificacion</th>
+                    <th scope="col">Estado</th>
+                    <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Fecha de Alta</th>
+                    <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Fecha de Baja</th>
+                    <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Fecha de Modificacion</th>
                     <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Editar Publicacion</th>
                     <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Dar Baja Publicacion</th>
                     <th sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" scope="col">Eliminar Publicacion</th>
@@ -95,6 +96,7 @@
 
                     <td th:text="${publicacion.nombre}">
                     <td th:text="${publicacion.descripcion}">
+                    <td th:text="${publicacion.estadoPublicacion}">
                     <td th:text="${publicacion.fechaAltaPublicacion}">
                     <td th:text="${publicacion.fechaBajaPublicacion}">
                     <td th:text="${publicacion.fechaModificacionPublicacion}">
@@ -108,8 +110,10 @@
                     <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')"
                             th:href="@{/eliminarPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger"
                                 id="boton3">Eliminar</button></a></td>
-                    <td><a sec:authorize="hasAnyRole('ROLE_CLIENTE')" th:href="@{/listarPublicaciones}"> <button
+                    <td><a sec:authorize="hasAnyRole('ROLE_CLIENTE')" th:if="${publicacion.estadoPublicacion.toString() != 'CONTRATADO'}" th:href="@{/modificarEstado/} + ${publicacion.id}"> <button
                                 class="btn btn-danger" id="boton3">Contratar</button></a></td>
+                    <td><a sec:authorize="hasAnyRole('ROLE_CLIENTE')" th:if="${publicacion.estadoPublicacion.toString() != 'PUBLICADO'}" th:href="@{/modificarEstado/} + ${publicacion.id}"> <button
+                                class="btn btn-danger" id="boton3">Cancelar</button></a></td>
                 </tr>
 
             </tbody>
