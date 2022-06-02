@@ -1,6 +1,7 @@
 package ar.com.MultiOficios.controladores;
 
 import ar.com.MultiOficios.entidades.Publicacion;
+import ar.com.MultiOficios.enums.EstadoPublicacion;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.servicios.PublicacionServicio;
 import java.util.List;
@@ -104,6 +105,17 @@ public class PublicacionControlador {
             model.put("publicacion", publicacion);
             publicacionServicio.eliminarPublicacion(id);
             attr.addFlashAttribute("warning", "ATENCION!: La publicacion se a eliminado");
+        } catch (ErrorServicio ex) {
+            attr.addFlashAttribute("ErrorServicio", ex.getMessage());
+        }
+        return "redirect:/listarPublicaciones";
+    }
+
+    
+    @GetMapping("/modificarEstado/{id}")
+    public String modificarEstado(RedirectAttributes attr, ModelMap model, @PathVariable String id) throws ErrorServicio {
+        try {
+            publicacionServicio.modificarEstado(id);
         } catch (ErrorServicio ex) {
             attr.addFlashAttribute("ErrorServicio", ex.getMessage());
         }

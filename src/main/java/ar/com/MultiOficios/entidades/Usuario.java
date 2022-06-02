@@ -3,7 +3,6 @@ package ar.com.MultiOficios.entidades;
 import ar.com.MultiOficios.enums.RolUsuario;
 import ar.com.MultiOficios.enums.ValoracionProveedores;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,23 +35,20 @@ public class Usuario {
     
     @Enumerated(EnumType.STRING)
     private RolUsuario rolUsuario;
-
-    
-    @OneToMany
-    private List<Publicacion> publicacion;
-    
+ 
     @ManyToOne 
     private Zona zona;
     
     @Enumerated(EnumType.STRING)
     private ValoracionProveedores valoracionPoveedores; 
     
-    
+    @ManyToOne
+    private PublicacionUsuario publicacionUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, List<Publicacion> publicacion, Zona zona, ValoracionProveedores valoracionPoveedores) {
+    public Usuario(String id, String nombre, String apellido, String email, String password, Date fechaAltaUsuario, Date fechaBajaUsuario, Date fechaModificacionUsuario, RolUsuario rolUsuario, Zona zona, ValoracionProveedores valoracionPoveedores) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -62,7 +58,6 @@ public class Usuario {
         this.fechaBajaUsuario = fechaBajaUsuario;
         this.fechaModificacionUsuario = fechaModificacionUsuario;
         this.rolUsuario = rolUsuario;
-        this.publicacion = publicacion;
         this.zona = zona;
         this.valoracionPoveedores = valoracionPoveedores;
     }
@@ -192,20 +187,6 @@ public class Usuario {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * @return the publicacion
-     */
-    public List<Publicacion> getPublicacion() {
-        return publicacion;
-    }
-
-    /**
-     * @param publicacion the publicacion to set
-     */
-    public void setPublicacion(List<Publicacion> publicacion) {
-        this.publicacion = publicacion;
     }
 
     /**

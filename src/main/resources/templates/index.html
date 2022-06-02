@@ -37,7 +37,9 @@
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil(id=__${session.usuariosession.id}__)}">Perfil</a></li>
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/logout}">Salir</a></li>
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a
-          th:href="@{/listarPublicaciones}">Servicios</a></li>
+          th:href="@{/listarPublicaciones}">Servicios Publicaciones</a></li>
+      <li class="nav__menu-item" sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+          th:href="@{/usuario/listarUsuarios}">Servicios Usuarios</a></li>
       <li class="nav__menu-item">
       </li>
       
@@ -285,8 +287,7 @@
     </div>
     <h2>Si quieres conocer más de nuestra página da click a:</h2>
     <div class="buttons">
-      <div class="container">
-        <a href="https://twitter.com/masuwa1018" class="btn effect01" target="_blank"><span>Sobre Nosotros</span></a>
+      <div th:href="@{/sobreNosotros}" class="btn effect01" target="_blank"><span>Sobre Nosotros</span></a>
       </div>
     </div>
 
