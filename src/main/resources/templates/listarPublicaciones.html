@@ -103,7 +103,7 @@
                     <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')"
                             th:href="@{/modificarPublicacion/} + ${publicacion.id}"> <button class="btn btn-success"
                                 id="boton1">Editar</button></a></td>
-                    <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')"
+                    <td><a sec:authorize="hasAnyRole('ROLE_PROOVEDOR')" 
                             th:href="@{/DarDeBajaPublicacion/} + ${publicacion.id}"> <button class="btn btn-danger"
                                 id="boton2">Dar
                                 baja</button></a></td>
