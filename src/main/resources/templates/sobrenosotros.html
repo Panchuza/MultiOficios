@@ -32,15 +32,57 @@
       <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/usuario/form}">Registrarse</a>
       </li>
       <li class="nav__menu-item" th:if="${session.usuariosession == null}"><a th:href="@{/login}">Ingresar</a></li>
-      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/zona/perfil}">Perfil</a></li>
+      <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a
+          th:href="@{/zona/perfil(id=__${session.usuariosession.id}__)}">Perfil</a></li>
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a th:href="@{/logout}">Salir</a></li>
       <li class="nav__menu-item" th:if="${session.usuariosession != null}"><a
-          th:href="@{/listarPublicaciones}">Servicios</a></li>
-      <li class="nav__menu-item"><a>Sobre Nosotros</a>
+          th:href="@{/listarPublicaciones}">Servicios Publicaciones</a></li>
+      <li class="nav__menu-item" sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+          th:href="@{/usuario/listarUsuarios}">Servicios Usuarios</a></li>
+      <li class="nav__menu-item">
       </li>
 
-      <li class="nav__menu-item"><a>Contactenos!</a></li>
     </ul>
+    <!--Boton-->
+    <div class="boton-modal">
+      <label for="btn-modal">
+        <a>CONTACTENOS!</a>
+      </label>
+    </div>
+    <!--Fin de Boton-->
+    <!--Ventana Modal-->
+    <input type="checkbox" id="btn-modal">
+    <div class="container-modal">
+      <div class="content-modal">
+        <h2>¡CONTACTENOS!</h2>
+        <div>
+
+          <p>Nombre: <input type="text" name="nombre" size="33" /></p>
+          <p>e-mail: <input type="text" name="e-mail" size="35" /></p>
+          <p>Mensaje:<br />
+          <div></div>
+          <textarea name="comentario" rows="5" cols="50">Escribe tu comentario: </textarea>
+
+
+        </div>
+        <div class="btn-cerrar">
+          <label for="btn-modal">Enviar</label>
+        </div>
+        <div class="btn-cerrar">
+          <label for="btn-modal">Cerrar</label>
+        </div>
+
+
+
+
+
+      </div>
+      <label for="btn-modal" class="cerrar-modal"></label>
+
+
+    </div>
+    <!--Fin de Ventana Modal-->
+
   </nav>
   <!--Fin Navegador----------------------------------------------------------------------------------------------------------->
 
@@ -51,17 +93,21 @@
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
- 
+
   <div class="content4">
     <h2> Sobre Multioficios!</h2>
-    <h2>Nuestro origen surge a partir de una necesidad detectada durante la pandemia del Covid-19, los primeros usuarios de "MultiOficios" necesitaban concordar de manera local, en una plataforma que los conectara con el prestador del servicio más cercano posible a sus hogares. Ese fue el inicio de nuestro proyecto, donde creamos un espacio seguro para aquellos que quieran conectarse y solicitar ese "MultiOficio".
-        Así nació este equipo de profesionales unidos por un mismo objetivo, queremos brindar a los usuarios posibilidades y una experiencia de calidad, conectarlos entre sí de manera fácil, rápida y efectiva.
-        
-        ¡Los oficios cumplen un rol fundamental en la economía! 
-        
-        Por eso queremos verlos crecer y nosotros hacerlo junto a ustedes.
-        </h2>
-        <img src="img/M (A4 Document) (1).png" height="1000px" width="1000px" alt="">
+    <h2>Nuestro origen surge a partir de una necesidad detectada durante la pandemia del Covid-19, los primeros usuarios
+      de "MultiOficios" necesitaban concordar de manera local, en una plataforma que los conectara con el prestador del
+      servicio más cercano posible a sus hogares. Ese fue el inicio de nuestro proyecto, donde creamos un espacio seguro
+      para aquellos que quieran conectarse y solicitar ese "MultiOficio".
+      Así nació este equipo de profesionales unidos por un mismo objetivo, queremos brindar a los usuarios posibilidades
+      y una experiencia de calidad, conectarlos entre sí de manera fácil, rápida y efectiva.
+
+      ¡Los oficios cumplen un rol fundamental en la economía!
+
+      Por eso queremos verlos crecer y nosotros hacerlo junto a ustedes.
+    </h2>
+    <img src="img/M (A4 Document) (1).png" height="1000px" width="1000px" alt="">
 
   </div>
 
