@@ -46,7 +46,7 @@ public class UsuarioServicio implements UserDetailsService{
         validarDatos(nombre, apellido, email, password, confirmarPassword);
         String passwordEncriptado = new BCryptPasswordEncoder().encode(password);
         Usuario usuario = new Usuario();
-        usuario.setZona(zonaServicio.crearZona("", "", "", "", ""));
+        usuario.setZona(zonaServicio.crearZona(null, null , null , null , null ));
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
