@@ -1,10 +1,14 @@
 package ar.com.MultiOficios.controladores;
 
 import ar.com.MultiOficios.entidades.Publicacion;
-import ar.com.MultiOficios.enums.EstadoPublicacion;
+import ar.com.MultiOficios.entidades.Usuario;
+import ar.com.MultiOficios.entidades.Zona;
 import ar.com.MultiOficios.errores.ErrorServicio;
 import ar.com.MultiOficios.servicios.PublicacionServicio;
+import ar.com.MultiOficios.servicios.UsuarioServicio;
+import ar.com.MultiOficios.servicios.ZonaServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +25,10 @@ public class PublicacionControlador {
 
     @Autowired
     private PublicacionServicio publicacionServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ZonaServicio zonaServicio;
 
     @GetMapping("/administrarPublicacion")
     public String administrarPublicacion() {
